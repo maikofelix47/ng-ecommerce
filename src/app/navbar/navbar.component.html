@@ -1,0 +1,12 @@
+<mat-toolbar color="primary">
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span><a [routerLink]="['/']" class="router-link">My Shop</a></span>
+    <span class="example-spacer"></span>
+    <button mat-button [matMenuTriggerFor]="menu">John</button>
+    <mat-menu #menu="matMenu">
+    <button mat-menu-item>My Account</button>
+    <button mat-menu-item>Orders</button>
+    </mat-menu>
+  </mat-toolbar>

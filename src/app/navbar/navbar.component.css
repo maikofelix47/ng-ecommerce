@@ -1,0 +1,7 @@
+.example-spacer {
+    flex: 1 1 auto;
+}
+.router-link{
+    text-decoration: none;
+    color: #FFF;
+}
