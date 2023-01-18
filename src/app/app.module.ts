@@ -13,11 +13,16 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatListModule } from '@angular/material/list';
 
 import { LoginComponent } from './login/login.component';
 import { LandingComponent } from './landing/landing.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { MainBannerComponent } from './main-banner/main-banner.component';
+import { ErrorComponent } from './error/error.component';
+
+import { ErrorService } from './services/shared/error.service';
 
 @NgModule({
   declarations: [
@@ -25,7 +30,8 @@ import { MainBannerComponent } from './main-banner/main-banner.component';
     LoginComponent,
     LandingComponent,
     NavbarComponent,
-    MainBannerComponent
+    MainBannerComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
@@ -37,9 +43,11 @@ import { MainBannerComponent } from './main-banner/main-banner.component';
     MatGridListModule,
     MatToolbarModule,
     MatIconModule,
-    MatMenuModule
+    MatMenuModule,
+    MatDividerModule,
+    MatListModule
   ],
-  providers: [],
+  providers: [ErrorService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
