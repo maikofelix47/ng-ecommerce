@@ -23,6 +23,7 @@ import { MainBannerComponent } from './main-banner/main-banner.component';
 import { ErrorComponent } from './error/error.component';
 
 import { ErrorService } from './services/shared/error.service';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { ErrorService } from './services/shared/error.service';
     LandingComponent,
     NavbarComponent,
     MainBannerComponent,
-    ErrorComponent
+    ErrorComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,

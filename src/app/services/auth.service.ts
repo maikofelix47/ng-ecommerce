@@ -6,6 +6,10 @@ import { environment } from '../../../environment';
 import { initializeApp } from 'firebase/app'
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
 
+//models
+
+import { FirebaseLoginResponse } from '../models/firebase-login-response';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -17,28 +21,25 @@ export class AuthService {
 
   constructor() { }
 
-  signUpToFirebaseWithEmailAndPassword(email: string, password: string){
+  signUpToFirebaseWithEmailAndPassword(email: string, password: string): Promise<string>{
 
-    console.log('');
+    return new Promise((resolve,reject)=> {
 
-    createUserWithEmailAndPassword(this.auth, email, password)
-        .then((userCredential) => {
-          // Signed in 
-          // const user = userCredential.user;
-          console.log('userCredentials', userCredential);
-          // ...
-        })
-        .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          // ..
-        });
+            createUserWithEmailAndPassword(this.auth, email, password)
+                .then((userCredential: any) => {
+                  resolve('success');
+                })
+                .catch((error) => {
+                  console.log('signup error', error);
+                  reject(error);
+   
+                });
+
+      });
 
   }
 
   signInToFireBaseWithEmailAndPassword(email: string, password: string): Promise<string>{
-
-    console.log('signInToFireBaseWithEmailAndPassword', email, password);
 
     return new Promise((resolve,reject)=> {
 

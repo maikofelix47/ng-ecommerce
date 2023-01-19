@@ -1,15 +1,12 @@
-.login-form{
+.signup-form{
     width: 100%;
 }
-.login-form-field{
+.signup-form-field{
     width: 100%;
 }
 
-.login-container{
+.signup-container{
     padding-top: 15%;
     width: 20%;
     margin-left: 40%;
-}
-.login-btn{
-    margin-right: 10px;
 }
