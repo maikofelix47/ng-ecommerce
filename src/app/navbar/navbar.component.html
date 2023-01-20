@@ -3,8 +3,14 @@
       <mat-icon>menu</mat-icon>
     </button>
     <span><a [routerLink]="['/']" class="router-link">My Shop</a></span>
+    <span class=""></span>
     <span class="example-spacer"></span>
-    <button mat-button [matMenuTriggerFor]="menu">John</button>
+    <span>
+    <app-search></app-search>
+  </span>
+    <button mat-button [matMenuTriggerFor]="menu">
+      John <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="person"></mat-icon>
+    </button>
     <mat-menu #menu="matMenu">
     <button mat-menu-item>My Account</button>
     <button mat-menu-item>Orders</button>

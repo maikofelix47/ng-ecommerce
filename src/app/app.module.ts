@@ -28,6 +28,7 @@ import { ErrorService } from './services/shared/error.service';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { CategoryComponent } from './category/category.component';
 import { CategoryService } from './services/category.service';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { CategoryService } from './services/category.service';
     MainBannerComponent,
     ErrorComponent,
     SignUpComponent,
-    CategoryComponent
+    CategoryComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
