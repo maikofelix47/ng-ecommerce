@@ -7,7 +7,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 
 
 import { AuthGuardService } from './services/auth-guard.service';
-import { CategoryComponent } from './category/category.component';
+import { ProductComponent } from './product/product.component';
 
 const routes: Routes = [
   {
@@ -27,7 +27,7 @@ const routes: Routes = [
   },
   {
     path: 'category/:id',
-    component: CategoryComponent,
+    component: ProductComponent,
     title: 'Category'
   }
 ];

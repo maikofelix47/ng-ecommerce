@@ -1,0 +1,21 @@
+
+<div class="products-content">
+    <h2 class="section-title">Products</h2>
+    <mat-divider class="title-divider"></mat-divider>
+    <mat-grid-list cols="4" rowHeight="1:1" *ngIf="products.length > 0">
+      <mat-grid-tile *ngFor="let product of products; index as i">
+          <mat-card class="category-card">
+              <mat-card-header>
+                <mat-card-title>{{product.name}}</mat-card-title>
+              </mat-card-header>
+              <mat-card-content>
+              </mat-card-content>
+              <mat-card-actions>
+                <button mat-raised-button color="primary" (click)="viewProduct(product.id)">View</button>
+              </mat-card-actions>
+            </mat-card>
+      </mat-grid-tile>
+       
+    </mat-grid-list>
+  
+  </div>

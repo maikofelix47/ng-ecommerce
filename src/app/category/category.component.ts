@@ -34,8 +34,8 @@ export class CategoryComponent implements OnInit{
      });
   }
 
-  public goToCategory(categoryName: string){
-     this.router.navigate([`/category/${categoryName}`]);
+  public goToCategory(categoryId: number){
+     this.router.navigate([`/category/${categoryId}`]);
   }
 
 }
