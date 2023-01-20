@@ -71,7 +71,7 @@ export class AuthService {
     const now = new Date();
     const timeDiffInMinutes = ((now.getTime() - lastLoginDate.getTime())/ 1000)/60;
     console.log('timedifferenceinMinutessinceLastLoggedIn', timeDiffInMinutes);
-    if(timeDiffInMinutes < 15){
+    if(timeDiffInMinutes < 30){
        return true;
     }else{
       return false;

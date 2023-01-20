@@ -1,0 +1,21 @@
+.categories-content{
+    text-align: center;
+    padding-left: 10%;
+}
+
+.category-card{
+    height: 250px;
+    width: 250px;
+    margin-left: 5px;
+}
+.category-card img{
+    height: 60%;
+    width: auto;
+    margin-left: 5px;
+}
+.title-divider{
+    width: 30%;
+}
+.section-title{
+    text-align: left;
+}

@@ -1,19 +1,23 @@
-<mat-grid-list cols="6" rowHeight="1:1">
-    <mat-grid-tile *ngFor="let category of (categories$ | async) ">
-        <mat-card class="example-card">
+<div class="categories-content">
+  <h2 class="section-title">Categories</h2>
+  <mat-divider class="title-divider"></mat-divider>
+  <mat-grid-list cols="6" rowHeight="1:1" *ngIf="categories.length > 0">
+    <mat-grid-tile *ngFor="let category of categories; index as i">
+        <mat-card class="category-card">
             <mat-card-header>
-              <mat-card-title>{{category}}</mat-card-title>
+              <mat-card-title>{{category.name}}</mat-card-title>
             </mat-card-header>
+            <img mat-card-image src="/assets/images/{{category.featureImg}}" alt={{category.name}} />
             <mat-card-content>
-              <p>
-              
-              </p>
             </mat-card-content>
             <mat-card-actions>
-              <button mat-button>View</button>
+              <button mat-raised-button color="primary" (click)="goToCategory(category.name)">View</button>
             </mat-card-actions>
           </mat-card>
     </mat-grid-tile>
-       
+     
   </mat-grid-list>
+
+</div>
+
   

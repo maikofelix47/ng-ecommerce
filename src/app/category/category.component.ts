@@ -1,8 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 
 import { CategoryService } from '../services/category.service';
+
+interface Category{
+  name: string;
+  featureImg: string;
+  id: number;
+}
 
 @Component({
   selector: 'app-category',
@@ -11,9 +17,9 @@ import { CategoryService } from '../services/category.service';
 })
 export class CategoryComponent implements OnInit{
 
-  public categories$!: Observable<any>;
+  public categories: Category[] = [];
 
-  constructor(private categoryService: CategoryService){
+  constructor(private categoryService: CategoryService, private router: Router){
 
   }
 
@@ -22,7 +28,14 @@ export class CategoryComponent implements OnInit{
   }
 
   public getCategories(){
-     this.categories$ = this.categoryService.getAll();
+     this.categoryService.getAll().subscribe((categories: any)=> {
+         console.log('categories', categories);
+         this.categories = categories;
+     });
+  }
+
+  public goToCategory(categoryName: string){
+     this.router.navigate([`/category/${categoryName}`]);
   }
 
 }

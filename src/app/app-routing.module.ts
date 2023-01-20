@@ -7,6 +7,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 
 
 import { AuthGuardService } from './services/auth-guard.service';
+import { CategoryComponent } from './category/category.component';
 
 const routes: Routes = [
   {
@@ -23,6 +24,11 @@ const routes: Routes = [
     path: 'sign-up',
     component: SignUpComponent,
     title: 'Sign Up'
+  },
+  {
+    path: 'category/:id',
+    component: CategoryComponent,
+    title: 'Category'
   }
 ];
 
