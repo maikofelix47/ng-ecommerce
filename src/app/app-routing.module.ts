@@ -8,6 +8,8 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 
 import { AuthGuardService } from './services/auth-guard.service';
 import { ProductComponent } from './product/product.component';
+import { ProductDetailsComponent } from './product/product-details/product-details.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {
@@ -29,6 +31,19 @@ const routes: Routes = [
     path: 'category/:id',
     component: ProductComponent,
     title: 'Category'
+  },
+  {
+    path: 'products',
+    component: ProductComponent,
+  },
+  {
+    path: 'product/:id',
+    component: ProductDetailsComponent,
+    title: 'Product Details'
+  },
+  { 
+    path: '**', 
+    component: PageNotFoundComponent 
   }
 ];
 

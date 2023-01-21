@@ -30,6 +30,11 @@ import { CategoryComponent } from './category/category.component';
 import { CategoryService } from './services/category.service';
 import { SearchComponent } from './search/search.component';
 import { ProductComponent } from './product/product.component';
+import { ProductDetailsComponent } from './product/product-details/product-details.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+
+import { ProductDetailsService } from './services/product-details.service';
+import { ProductsService } from './services/products.service';
 
 @NgModule({
   declarations: [
@@ -42,7 +47,9 @@ import { ProductComponent } from './product/product.component';
     SignUpComponent,
     CategoryComponent,
     SearchComponent,
-    ProductComponent
+    ProductComponent,
+    ProductDetailsComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +67,7 @@ import { ProductComponent } from './product/product.component';
     HttpClientModule,
     MatCardModule
   ],
-  providers: [ErrorService, CategoryService],
+  providers: [ErrorService, CategoryService, ProductDetailsService, ProductsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

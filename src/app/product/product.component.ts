@@ -36,8 +36,8 @@ export class ProductComponent implements OnInit{
      });
   }
 
-  viewProduct(productId: number){
-
+  viewProduct(productId: number): void{
+       this.router.navigate(['./product/', productId]);
   }
 
 }

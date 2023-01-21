@@ -8,9 +8,7 @@ import { Product } from '../models/product';
 
 import { firebaseDbUrl } from 'environment';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class ProductsService {
 
   constructor(private http: HttpClient) { }
