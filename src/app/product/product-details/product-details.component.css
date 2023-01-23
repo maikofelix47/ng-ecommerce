@@ -1,0 +1,14 @@
+.container{
+    padding-top: 50px;
+    padding-left: 10%;
+    padding-right: 10%;
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+.col{
+    text-align: left;
+}
+.col img{
+    width: 50%;
+    height: auto;
+}

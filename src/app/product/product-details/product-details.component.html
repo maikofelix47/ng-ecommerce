@@ -1,1 +1,17 @@
-<p>{{product$ | async | json}}</p>
+<div *ngFor="let prod of (product$ | async)" class="container">
+
+    <div class="col">
+        <img  src="../../../assets/images/{{prod.productImg}}" alt={{prod.productImg}} />
+    </div>
+    <div class="col">
+        <h2>{{prod.name}}</h2>
+        <p>Price : {{prod.price}}</p>
+        <p>In Stock: {{prod.inStock > 0 ? 'Yes': 'No'}}</p>
+        <p><button mat-raised-button color="primary" (click)="addToCart(prod)">
+            Add to Cart 
+            <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="shopping_cart"></mat-icon>
+        </button></p>
+    </div>
+</div>
+
+  

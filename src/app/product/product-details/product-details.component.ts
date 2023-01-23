@@ -13,7 +13,7 @@ import { Product } from '../../models/product';
   styleUrls: ['./product-details.component.css']
 })
 export class ProductDetailsComponent implements OnInit {
-    public product$!: Observable<Product>;
+    public product$!: Observable<Product[]>;
     constructor(private productDetailsService: ProductDetailsService,
       private route: ActivatedRoute){
 
@@ -28,5 +28,9 @@ export class ProductDetailsComponent implements OnInit {
     }
     public getProductDetails(productId: number){
         this.product$ = this.productDetailsService.getProductById(productId);
+    }
+
+    public addToCart(product: Product): void{
+
     }
 }

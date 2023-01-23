@@ -13,7 +13,7 @@ export class ProductDetailsService {
 
   constructor(private http: HttpClient) { }
 
-  getProductById(productId: number): Observable<Product>{
+  getProductById(productId: number): Observable<Product[]>{
     return this.http.get(firebaseDbUrl).pipe(map((results: any)=> {
          return results['products'];
     }),map((results: any)=> {
