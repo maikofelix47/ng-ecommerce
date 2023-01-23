@@ -6,8 +6,17 @@
     <span class=""></span>
     <span class="example-spacer"></span>
     <span>
+      <a [routerLink]="['/shopping-cart']" class="router-link">
+      <mat-icon aria-hidden="false" matBadge="{{itemsInCart$ | async}}" matBadgeColor="warn" aria-label="Shopping cart icon" fontIcon="shopping_cart"></mat-icon> 
+      
+     </a>
+   </span>
+   <span class=""></span>
+   <!--
+    <span>
     <app-search></app-search>
   </span>
+-->
     <button mat-button [matMenuTriggerFor]="menu">
       John <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="person"></mat-icon>
     </button>
