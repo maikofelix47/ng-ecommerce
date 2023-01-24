@@ -19,6 +19,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
 import { MatBadgeModule } from '@angular/material/badge'; 
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { LoginComponent } from './login/login.component';
 import { LandingComponent } from './landing/landing.component';
@@ -38,6 +39,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { ProductDetailsService } from './services/product-details.service';
 import { ProductsService } from './services/products.service';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { ShoppingCartDialogComponent } from './shopping-cart/shopping-cart-dialog/shopping-cart-dialog.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +55,8 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
     ProductComponent,
     ProductDetailsComponent,
     PageNotFoundComponent,
-    ShoppingCartComponent
+    ShoppingCartComponent,
+    ShoppingCartDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -71,7 +74,8 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
     HttpClientModule,
     MatCardModule,
     MatTableModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatDialogModule
   ],
   providers: [ErrorService, CategoryService, ProductDetailsService, ProductsService],
   bootstrap: [AppComponent]

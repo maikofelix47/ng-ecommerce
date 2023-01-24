@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 
 import { ShoppingCartService } from '../services/shopping-cart.service';
 
 import { Product } from '../models/product';
 import { Cart, CartItem } from '../models/shopping-cart';
+import { ShoppingCartDialogComponent } from './shopping-cart-dialog/shopping-cart-dialog.component';
 
 
 @Component({
@@ -14,24 +16,9 @@ import { Cart, CartItem } from '../models/shopping-cart';
 export class ShoppingCartComponent implements OnInit{
   public displayedColumns: string[] = ['productId','productName', 'unitPrice', 'quantity', 'edit'];
   public cart!: Cart;
-  public cartItems: CartItem[] = [
-    {
-      productName: 'Macbook 2021',
-      productId: 1,
-      unitPrice: 500,
-      quantity: 1,
-      totalPrice: 500
-    },
-    {
-      productName: 'FIFA 23',
-      productId: 2,
-      unitPrice: 43,
-      quantity: 1,
-      totalPrice: 43
-    }
-  ];
+  public cartItems: CartItem[] = [];
 
-  constructor(private cartService: ShoppingCartService){
+  constructor(private cartService: ShoppingCartService, private dialog: MatDialog){
 
   }
 
@@ -42,6 +29,7 @@ export class ShoppingCartComponent implements OnInit{
   public onRowClick(row: any){
   }
   public editCartItem(element: any){
+    this.openDialog(element);
   }
   public removeCartItem(element: any){
     this.cartItems = this.cartItems.filter((item: CartItem)=> {
@@ -52,5 +40,15 @@ export class ShoppingCartComponent implements OnInit{
   public getCart(){
       this.cartItems = this.cartService.getCart();
   }
+  public openDialog(element: any): void {
+    const dialogRef = this.dialog.open(ShoppingCartDialogComponent, {
+      data: element
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
+
 
 }

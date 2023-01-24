@@ -8,14 +8,16 @@ import { ShoppingCartService } from '../services/shopping-cart.service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit{
 
   public itemsInCart$!: Observable<number>;
 
   constructor(private cartService: ShoppingCartService){
 
-    this.getItemsInCart();
+  }
 
+  public ngOnInit(): void {
+    this.getItemsInCart();
   }
   
   public getItemsInCart(){

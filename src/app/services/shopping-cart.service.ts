@@ -11,7 +11,7 @@ import { Cart,CartItem } from '../models/shopping-cart';
 })
 export class ShoppingCartService {
 
-  private itemsInCart = new BehaviorSubject<number>(0);
+  private itemsInCart = new BehaviorSubject<number>(this.getCart().length);
   public itemsInCartObs$ = this.itemsInCart.asObservable();
   public no = 0;
   public cart!: CartItem[];
@@ -49,5 +49,31 @@ export class ShoppingCartService {
     localStorage.setItem('cart', JSON.stringify(cart));
     this.cart = cart;
     this.itemsInCart.next(this.cart.length);
+  }
+  updateCart(item: CartItem): Promise<string | Error>{
+
+    return new Promise((resolve,reject)=> {
+
+      try{
+
+      const productId = item.productId;
+      const newCart = this.getCart();
+      const itemIndex = newCart.findIndex((cartItem: CartItem)=> {
+         return cartItem.productId === productId;
+      });
+ 
+      if(itemIndex >= 0){
+       newCart[itemIndex] = item;
+      }
+ 
+      this.setCart(newCart);
+      resolve('Cart has been updated successfully');
+    }catch(e){
+       reject(e)
+    }
+
+    });
+  
+
   }
 }

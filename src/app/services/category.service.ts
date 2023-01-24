@@ -19,7 +19,6 @@ export class CategoryService {
          const newResults = results.filter((category: any)=> {
             return category !== null;
          });
-         console.log('newresults', newResults);
          return newResults;
      }));
   }
