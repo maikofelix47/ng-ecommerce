@@ -1,8 +1,8 @@
-<div class="categories-content">
-  <h2 class="section-title">Categories</h2>
-  <mat-divider class="title-divider"></mat-divider>
-  <mat-grid-list cols="6" rowHeight="1:1" *ngIf="categories.length > 0">
-    <mat-grid-tile *ngFor="let category of categories; index as i">
+<div class="category-content">
+<h2 class="category-title">Categories</h2>
+<mat-divider class="category-divider"></mat-divider>
+  <div class="grid-container">
+    <div class="grid-item" *ngFor="let category of categories; index as i">
         <mat-card class="category-card">
             <mat-card-header>
               <mat-card-title>{{category.name}}</mat-card-title>
@@ -14,10 +14,10 @@
               <button mat-raised-button color="primary" (click)="goToCategory(category.id)">View</button>
             </mat-card-actions>
           </mat-card>
-    </mat-grid-tile>
+        </div>
      
-  </mat-grid-list>
-
+  </div>
 </div>
+
 
   
