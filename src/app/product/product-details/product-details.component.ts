@@ -46,13 +46,14 @@ export class ProductDetailsComponent implements OnInit {
     public addToCart(product: Product, quantity: number): void{
        this.cartService.addItemsToCart(product,quantity);
        this.hideCartButton = true;
+       this.getCart();
     }
     public getCart(){
       this.cart = this.cartService.getCart();
     }
     public toggleAddToCartButton(){
         const hasProduct = this.cart.some((item: CartItem)=> {
-              return item.productId = this.productId; 
+              return item.productId === this.productId; 
         });
         this.hideCartButton = hasProduct;
     }

@@ -14,9 +14,10 @@ import { ShoppingCartDialogComponent } from './shopping-cart-dialog/shopping-car
   styleUrls: ['./shopping-cart.component.css']
 })
 export class ShoppingCartComponent implements OnInit{
-  public displayedColumns: string[] = ['productId','productName', 'unitPrice', 'quantity', 'edit'];
+  public displayedColumns: string[] = ['productId','productName', 'unitPrice', 'quantity', 'total' ,'edit'];
   public cart!: Cart;
   public cartItems: CartItem[] = [];
+  public totalCost: number = 0;
 
   constructor(private cartService: ShoppingCartService, private dialog: MatDialog){
 
@@ -48,6 +49,14 @@ export class ShoppingCartComponent implements OnInit{
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
     });
+  }
+  public getTotalCost() {
+    this.totalCost = this.cartItems.map((t:CartItem) => t.unitPrice * t.quantity).reduce((acc, value) => acc + value, 0);
+    return this.totalCost;
+  }
+
+  public checkout(){
+    
   }
 
 
