@@ -7,6 +7,7 @@ import { ProductDetailsService } from '../../services/product-details.service';
 import { ShoppingCartService } from '../../services/shopping-cart.service';
 
 import { Product } from '../../models/product';
+import { CartItem } from 'src/app/models/shopping-cart';
 
 @Component({
   selector: 'app-product-details',
@@ -14,7 +15,11 @@ import { Product } from '../../models/product';
   styleUrls: ['./product-details.component.css']
 })
 export class ProductDetailsComponent implements OnInit {
-    public product$!: Observable<Product[]>;
+    public product:Product[] = [];
+    public quantity = 1;
+    public hideCartButton = false;
+    public cart: CartItem[] = [];
+    public productId!: number;
     constructor(private productDetailsService: ProductDetailsService,
       private route: ActivatedRoute,
       private cartService: ShoppingCartService){
@@ -23,16 +28,32 @@ export class ProductDetailsComponent implements OnInit {
     public ngOnInit(): void {
        this.route.paramMap.subscribe((params: ParamMap)=> {
              if(params){
-                 const productId = params.get('id');
-                 this.getProductDetails(Number(productId))
+                 this.productId = Number(params.get('id'));
+                 this.getProductDetails(this.productId);
+                
              }
        });
+      
     }
     public getProductDetails(productId: number){
-        this.product$ = this.productDetailsService.getProductById(productId);
+        this.productDetailsService.getProductById(productId).subscribe((product: Product[])=> {
+           this.product = product;
+           this.getCart();
+           this.toggleAddToCartButton();
+        });;
     }
 
-    public addToCart(product: Product): void{
-       this.cartService.addItemsToCart(product);
+    public addToCart(product: Product, quantity: number): void{
+       this.cartService.addItemsToCart(product,quantity);
+       this.hideCartButton = true;
+    }
+    public getCart(){
+      this.cart = this.cartService.getCart();
+    }
+    public toggleAddToCartButton(){
+        const hasProduct = this.cart.some((item: CartItem)=> {
+              return item.productId = this.productId; 
+        });
+        this.hideCartButton = hasProduct;
     }
 }

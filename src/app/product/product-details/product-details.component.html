@@ -1,4 +1,4 @@
-<div *ngFor="let prod of (product$ | async)" class="container">
+<div *ngFor="let prod of product" class="container">
 
     <div class="col">
         <img  src="../../../assets/images/{{prod.productImg}}" alt={{prod.productImg}} />
@@ -7,8 +7,12 @@
         <h2>{{prod.name}}</h2>
         <p>Price : {{prod.price}}</p>
         <p>In Stock: {{prod.inStock > 0 ? 'Yes': 'No'}}</p>
-        <p><button mat-raised-button color="primary" (click)="addToCart(prod)">
-            Add to Cart 
+        <mat-form-field>
+            <mat-label>Quantity</mat-label>
+            <input matInput [(ngModel)]="quantity" type="number">
+        </mat-form-field>
+        <p><button mat-raised-button color="primary" (click)="addToCart(prod,quantity)" [disabled]="hideCartButton">
+            Add to Cart
             <mat-icon aria-hidden="false" aria-label="Shopping cart icon" fontIcon="shopping_cart"></mat-icon>
         </button></p>
     </div>

@@ -21,14 +21,14 @@ export class ShoppingCartService {
   getItemsInCart(): Observable<number>{
      return this.itemsInCartObs$;
   }
-  addItemsToCart(item: Product){
+  addItemsToCart(item: Product, quantity: number){
     const cart: CartItem[] = this.getCart();
 
      cart.push({
         productName: item.name,
         productId: item.id,
         unitPrice: item.price,
-        quantity: 1,
+        quantity: quantity,
         totalPrice: 0
      });
 
