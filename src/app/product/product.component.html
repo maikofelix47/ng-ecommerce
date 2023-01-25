@@ -12,6 +12,7 @@
                   <mat-label>Quantity</mat-label>
                   <input matInput [(ngModel)]="quantity" type="number">
               </mat-form-field>
+              <p><app-rating [rating]="product.rating" [maxRating]="5"></app-rating></p>
               </mat-card-content>
               <mat-card-actions>
                 <button mat-raised-button color="primary" (click)="viewProduct(product.id)" class="product-btn">View</button>

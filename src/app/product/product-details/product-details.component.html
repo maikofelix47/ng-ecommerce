@@ -11,6 +11,7 @@
             <mat-label>Quantity</mat-label>
             <input matInput [(ngModel)]="quantity" type="number">
         </mat-form-field>
+        <p><app-rating [rating]="prod.rating" [maxRating]="5"></app-rating></p>
         <p><button mat-raised-button color="primary" (click)="addToCart(prod,quantity)" [disabled]="hideCartButton">
             Add to Cart
             <mat-icon aria-hidden="false" aria-label="Shopping cart icon" fontIcon="shopping_cart"></mat-icon>

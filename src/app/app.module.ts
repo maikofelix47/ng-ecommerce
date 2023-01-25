@@ -40,6 +40,7 @@ import { ProductDetailsService } from './services/product-details.service';
 import { ProductsService } from './services/products.service';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { ShoppingCartDialogComponent } from './shopping-cart/shopping-cart-dialog/shopping-cart-dialog.component';
+import { RatingComponent } from './rating/rating.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { ShoppingCartDialogComponent } from './shopping-cart/shopping-cart-dialo
     ProductDetailsComponent,
     PageNotFoundComponent,
     ShoppingCartComponent,
-    ShoppingCartDialogComponent
+    ShoppingCartDialogComponent,
+    RatingComponent
   ],
   imports: [
     BrowserModule,
