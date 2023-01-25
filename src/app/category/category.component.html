@@ -1,20 +1,16 @@
 <div class="category-content">
 <h2 class="category-title">Categories</h2>
-<mat-divider class="category-divider"></mat-divider>
   <div class="grid-container">
     <div class="grid-item" *ngFor="let category of categories; index as i">
-        <mat-card class="category-card">
+        <mat-card
+              class="category-card" 
+              (click)="goToCategory(category.id)">
             <mat-card-header>
               <mat-card-title>{{category.name}}</mat-card-title>
             </mat-card-header>
             <img mat-card-image src="/assets/images/{{category.featureImg}}" alt={{category.name}} />
-            <mat-card-content>
-            </mat-card-content>
-            <mat-card-actions>
-              <button mat-raised-button color="primary" (click)="goToCategory(category.id)">View</button>
-            </mat-card-actions>
           </mat-card>
-        </div>
+    </div>
      
   </div>
 </div>

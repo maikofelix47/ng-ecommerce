@@ -1,5 +1,6 @@
 .category-content{
     margin-top: 50px;
+    background-color: #FFF;
 }
 .category-divider{
     text-align: center;
@@ -18,8 +19,12 @@
 }
 
 .category-card{
-    height: 350px;
+    height: 400px;
     width: 80%;
+    box-shadow: none;
+}
+.category-card:hover{
+    cursor: pointer;
 }
 .category-card img{
     height: 60%;
