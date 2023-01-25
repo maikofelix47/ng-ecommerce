@@ -12,7 +12,7 @@
     width: 300px;
 }
 .category-card img{
-    
+    max-height: 50%;
 }
 .product-btn{
     background-color: #FFF;
