@@ -12,6 +12,7 @@ import { Product } from '../models/product';
 })
 export class ProductComponent implements OnInit{
  public products: Product[] = [];
+ public quantity: number = 1;
 
   constructor(private productService: ProductsService,
     private route: ActivatedRoute,

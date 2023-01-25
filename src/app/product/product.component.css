@@ -3,3 +3,29 @@
     padding-right: 10%;
     padding-top: 50px;
 }
+.product-grid-container{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+}
+.category-card{
+    height: 400px;
+    width: 300px;
+}
+.category-card img{
+    
+}
+.product-btn{
+    background-color: #FFF;
+    color: #673ab7;
+    width: 50%;
+}
+.product-btn:hover{
+    background-color: #673ab7;
+    color: #FFF;
+}
+.section-title{
+    text-align: center;
+}
+.product-title{
+    color: #673ab7;
+}

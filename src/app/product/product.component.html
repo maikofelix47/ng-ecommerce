@@ -1,21 +1,28 @@
 
 <div class="products-content">
     <h2 class="section-title">Products</h2>
-    <mat-divider class="title-divider"></mat-divider>
-    <mat-grid-list cols="4" rowHeight="1:1" *ngIf="products.length > 0">
-      <mat-grid-tile *ngFor="let product of products; index as i">
+    <div class="product-grid-container" *ngIf="products.length > 0">
+      <div class="product-grid-item" *ngFor="let product of products; index as i">
           <mat-card class="category-card">
-              <mat-card-header>
-                <mat-card-title>{{product.name}}</mat-card-title>
-              </mat-card-header>
+              <img mat-card-image  src="../../../assets/images/{{product.productImg}}"  alt="Photo of a Shiba Inu">
               <mat-card-content>
+                <h3 class="product-title">{{product.name}}</h3>
+                <p>Price : {{product.price}}</p>
+                <mat-form-field>
+                  <mat-label>Quantity</mat-label>
+                  <input matInput [(ngModel)]="quantity" type="number">
+              </mat-form-field>
               </mat-card-content>
               <mat-card-actions>
-                <button mat-raised-button color="primary" (click)="viewProduct(product.id)">View</button>
+                <button mat-raised-button color="primary" (click)="viewProduct(product.id)" class="product-btn">View</button>
+                <button mat-raised-button color="primary" (click)="viewProduct(product.id)" class="product-btn">
+                  Add to cart
+                  <mat-icon aria-hidden="false" aria-label="Shopping cart icon" fontIcon="shopping_cart"></mat-icon>
+                </button>
               </mat-card-actions>
             </mat-card>
-      </mat-grid-tile>
+      </div>
        
-    </mat-grid-list>
+    </div>
   
   </div>
