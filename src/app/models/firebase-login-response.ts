@@ -10,7 +10,8 @@ export interface FirebaseLoginResponse{
         registered: boolean;
         refreshToken: string;        
         expiresIn: string;
-    }
+    },
+    operationType: string;
 }
 
 export interface FirebaseUser {

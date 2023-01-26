@@ -3,82 +3,93 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../../environment';
 
 //firebase
-import { initializeApp } from 'firebase/app'
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
+import { initializeApp } from 'firebase/app';
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  UserCredential,
+} from 'firebase/auth';
 
 //models
 
-import { FirebaseLoginResponse } from '../models/firebase-login-response';
+import {
+  FirebaseUser
+} from '../models/firebase-login-response';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
-
   public app = initializeApp(environment.firebase);
 
   public auth = getAuth(this.app);
 
-  constructor() { }
+  private signedInUserSub = new Subject();
+  public signedInUser$ = this.signedInUserSub.asObservable();
 
-  signUpToFirebaseWithEmailAndPassword(email: string, password: string): Promise<string>{
 
-    return new Promise((resolve,reject)=> {
+  constructor() {}
 
-            createUserWithEmailAndPassword(this.auth, email, password)
-                .then((userCredential: any) => {
-                  resolve('success');
-                })
-                .catch((error) => {
-                  console.log('signup error', error);
-                  reject(error);
-   
-                });
-
-      });
-
-  }
-
-  signInToFireBaseWithEmailAndPassword(email: string, password: string): Promise<string>{
-
-    return new Promise((resolve,reject)=> {
-
-          signInWithEmailAndPassword(this.auth, email, password)
-          .then((userCredential) => {
-            // Signed in 
-            const  { user } = userCredential;
-            localStorage.setItem('user', JSON.stringify(user));
-             resolve('success');
-          })
-          .catch((error) => {
-            console.log('error', error);
-            reject(error);
-          });
-
+  signUpToFirebaseWithEmailAndPassword(
+    email: string,
+    password: string
+  ): Promise<string> {
+    return new Promise((resolve, reject) => {
+      createUserWithEmailAndPassword(this.auth, email, password)
+        .then((userCredential: UserCredential) => {
+          resolve('success');
+        })
+        .catch((error) => {
+          console.log('signup error', error);
+          reject(error);
+        });
     });
-
-   
-
   }
 
-  isAuthorized(): boolean{
+  signInToFireBaseWithEmailAndPassword(
+    email: string,
+    password: string
+  ): Promise<string> {
+    return new Promise((resolve, reject) => {
+      signInWithEmailAndPassword(this.auth, email, password)
+        .then((userCredential: UserCredential) => {
+          // Signed in
+          const { user } = userCredential;
+          localStorage.setItem('user', JSON.stringify(user));
+          this.signedInUserSub.next(user);
+          resolve('success');
+        })
+        .catch((error) => {
+          console.log('error', error);
+          reject(error);
+        });
+    });
+  }
 
+  isAuthorized(): boolean {
     const user = localStorage.getItem('user') || false;
-  if(user){
-    const userObj = JSON.parse(user);
-    const { lastLoginAt } = userObj;
-    const lastLoginDate = new Date(parseInt(lastLoginAt));
-    const now = new Date();
-    const timeDiffInMinutes = ((now.getTime() - lastLoginDate.getTime())/ 1000)/60;
-    console.log('timedifferenceinMinutessinceLastLoggedIn', timeDiffInMinutes);
-    if(timeDiffInMinutes < 30){
-       return true;
-    }else{
+    if (user) {
+      const userObj: FirebaseUser = JSON.parse(user);
+      const { lastLoginAt } = userObj;
+      const lastLoginDate = new Date(parseInt(lastLoginAt));
+      const now = new Date();
+      const timeDiffInMinutes =
+        (now.getTime() - lastLoginDate.getTime()) / 1000 / 60;
+      if (timeDiffInMinutes < 30) {
+        return true;
+      } else {
+        return false;
+      }
+    } else {
       return false;
     }
-  }else{
-    return false;
   }
-
+  getSignedInUser(){
+    const user = localStorage.getItem('user') || null;
+    if(user){
+        return JSON.parse(user);
+    }
   }
 }

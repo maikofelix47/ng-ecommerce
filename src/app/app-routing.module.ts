@@ -17,8 +17,7 @@ import { AppreciationComponent } from './appreciation/appreciation.component';
 const routes: Routes = [
   {
      path: '',
-     component: LandingComponent,
-     canActivate: [AuthGuardService]
+     component: LandingComponent
   },
   {
     path: 'login',
@@ -47,12 +46,14 @@ const routes: Routes = [
   {
     path: 'shopping-cart',
     component: ShoppingCartComponent,
-    title: 'Shopping Cart'
+    title: 'Shopping Cart',
+    canActivate: [AuthGuardService]
   },
   {
     path: 'checkout',
     component: CheckoutComponent,
-    title: 'Check Out'
+    title: 'Check Out',
+    canActivate: [AuthGuardService]
   },
   {
     path: 'appreciation',
