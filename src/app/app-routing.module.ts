@@ -12,6 +12,7 @@ import { ProductDetailsComponent } from './product/product-details/product-detai
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { AppreciationComponent } from './appreciation/appreciation.component';
 
 const routes: Routes = [
   {
@@ -52,6 +53,11 @@ const routes: Routes = [
     path: 'checkout',
     component: CheckoutComponent,
     title: 'Check Out'
+  },
+  {
+    path: 'appreciation',
+    component: AppreciationComponent,
+    title: 'Thank You'
   },
   { 
     path: '**', 
