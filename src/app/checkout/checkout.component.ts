@@ -1,10 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { CartItem } from '../models/shopping-cart';
+import { ShoppingCartService } from '../services/shopping-cart.service';
 
-interface CheckoutSummary{
-  cartDetails: any;
-  paymentMode:any;
-  address: any;
+interface Payment{
+  paymentMode: string | null,
+  mobileNo: string | null;
+}
+
+interface Address{
+  county: string | null;
+  town: string | null;
+  estate : string | null;
+  houseAddress: string | null;
 }
 
 @Component({
@@ -15,7 +23,18 @@ interface CheckoutSummary{
 export class CheckoutComponent implements OnInit{
 
   public paymentMode: string = '';
-  public checkoutSummary!: CheckoutSummary;
+  public paymentDetails: Payment = {
+    paymentMode: '',
+    mobileNo: ''
+  };
+  public addressDetails: Address = {
+    county: '',
+    town: '',
+    estate : '',
+    houseAddress: ''
+  };
+  public cartItems: CartItem[] = [];
+  public cartTotal = 0;
 
   paymentModeFormGroup = this.formBuilder.group({
     paymentMode: ['', Validators.required],
@@ -28,17 +47,32 @@ export class CheckoutComponent implements OnInit{
     houseAddress: ['', Validators.required]
   });
 
-  constructor(private formBuilder: FormBuilder){
+  constructor(private formBuilder: FormBuilder,
+    private cartService: ShoppingCartService){
 
   }
   public ngOnInit(): void {
-    
+    this.getCartItems();
+    this.getCartTotal();
   }
   public generateCheckoutSummary(){
-    this.checkoutSummary = {
-       cartDetails: {},
-       paymentMode: this.paymentModeFormGroup.getRawValue(),
-       address: this.addressFormGroup.getRawValue()
-    };
+ 
+       this.paymentDetails = this.paymentModeFormGroup.getRawValue();
+       this.addressDetails = this.addressFormGroup.getRawValue();
+
+       console.log('paymentdetails', this.paymentDetails);
+       console.log('addressDetails', this.addressDetails);
+
   }
+
+  private getCartItems(){
+    this.cartItems = this.cartService.getCart();
+  }
+  private getCartTotal(){
+    this.cartTotal = this.cartService.getCartTotal();
+  }
+  public completeShopping(){
+     this.cartService.emptyCart();
+  }
+   
 }

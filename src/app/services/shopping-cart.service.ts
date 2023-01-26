@@ -65,4 +65,16 @@ export class ShoppingCartService {
       }
     });
   }
+  getCartTotal(): number{
+     const cart = this.getCart();
+     if (cart.length === 0) return 1;
+     return cart.map((t:CartItem) => t.unitPrice * t.quantity).reduce((acc, value) => acc + value, 0);
+  }
+  emptyCart(){
+    localStorage.removeItem('cart');
+    const cart = this.getCart();
+    this.cart = cart;
+    this.itemsInCart.next(cart.length);
+
+  }
 }

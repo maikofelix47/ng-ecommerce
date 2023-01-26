@@ -21,7 +21,7 @@
                            required>
                 </mat-form-field>
                 <div>
-                  <button mat-button matStepperNext>Next</button>
+                  <button mat-button mat-raised-button color="primary" matStepperNext>Next</button>
                 </div>
               </form>
             </mat-step>
@@ -53,16 +53,38 @@
                          required>
                 </mat-form-field>
                 <div>
-                  <button mat-button matStepperPrevious>Back</button>
-                  <button mat-button matStepperNext (click)="generateCheckoutSummary()">Next</button>
+                  <button mat-button matStepperPrevious mat-raised-button color="accent">Back</button>
+                  <button mat-button mat-raised-button color="primary" matStepperNext (click)="generateCheckoutSummary()">Next</button>
                 </div>
               </form>
             </mat-step>
             <mat-step>
               <ng-template matStepLabel>Confirm Details</ng-template>
+              <div class="payment-mode-details">
+                <h3>Shopping Details</h3>
+                  <mat-list role="list">
+                    <mat-list-item role="listitem" *ngFor="let item of cartItems">{{item.productName}} : Sh {{item.quantity * item.unitPrice}}</mat-list-item>
+                    <mat-list-item role="listitem">Total Cost : {{cartTotal}}</mat-list-item>
+                  </mat-list>
+                <h3>Payment Details</h3>
+                  <mat-list role="list">
+                    <mat-list-item role="listitem">Payment Mode: {{paymentDetails.paymentMode}}</mat-list-item>
+                    <mat-list-item role="listitem">Mobile No: {{paymentDetails.mobileNo}}</mat-list-item>
+                  </mat-list>
+
+                  <h3>Address Details</h3>
+                  <mat-list role="list">
+                      <mat-list-item role="listitem">County : {{addressDetails.county}}</mat-list-item>
+                      <mat-list-item role="listitem">Town : {{addressDetails.town}}</mat-list-item>
+                      <mat-list-item role="listitem">Estate : {{addressDetails.estate}}</mat-list-item>
+                      <mat-list-item role="listitem">House Address : {{addressDetails.houseAddress}}</mat-list-item>
+                    </mat-list>
+                  
+              </div>
               <div>
                 <button mat-button matStepperPrevious>Back</button>
-                <button mat-button (click)="stepper.reset()">Reset</button>
+                <button mat-button mat-raised-button color="warn" (click)="stepper.reset()">Reset</button>
+                <button mat-button mat-raised-button color="primary" (click)="completeShopping()">Finish</button>
               </div>
             </mat-step>
           </mat-stepper>
