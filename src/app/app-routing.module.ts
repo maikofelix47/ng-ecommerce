@@ -11,6 +11,7 @@ import { ProductComponent } from './product/product.component';
 import { ProductDetailsComponent } from './product/product-details/product-details.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 const routes: Routes = [
   {
@@ -46,6 +47,11 @@ const routes: Routes = [
     path: 'shopping-cart',
     component: ShoppingCartComponent,
     title: 'Shopping Cart'
+  },
+  {
+    path: 'checkout',
+    component: CheckoutComponent,
+    title: 'Check Out'
   },
   { 
     path: '**', 

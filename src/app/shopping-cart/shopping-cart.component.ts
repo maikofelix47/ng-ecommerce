@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 
 import { ShoppingCartService } from '../services/shopping-cart.service';
@@ -19,7 +20,9 @@ export class ShoppingCartComponent implements OnInit{
   public cartItems: CartItem[] = [];
   public totalCost: number = 0;
 
-  constructor(private cartService: ShoppingCartService, private dialog: MatDialog){
+  constructor(private cartService: ShoppingCartService, 
+    private dialog: MatDialog,
+    private router: Router){
 
   }
 
@@ -56,7 +59,7 @@ export class ShoppingCartComponent implements OnInit{
   }
 
   public checkout(){
-    
+    this.router.navigate(['/checkout']);
   }
 
 
