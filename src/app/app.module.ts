@@ -45,6 +45,7 @@ import { ShoppingCartDialogComponent } from './shopping-cart/shopping-cart-dialo
 import { RatingComponent } from './rating/rating.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { AppreciationComponent } from './appreciation/appreciation.component';
+import { MainDashboardComponent } from './main-dashboard/main-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { AppreciationComponent } from './appreciation/appreciation.component';
     ShoppingCartDialogComponent,
     RatingComponent,
     CheckoutComponent,
-    AppreciationComponent
+    AppreciationComponent,
+    MainDashboardComponent
   ],
   imports: [
     BrowserModule,
