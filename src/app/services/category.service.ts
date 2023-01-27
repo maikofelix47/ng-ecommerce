@@ -12,10 +12,8 @@ export class CategoryService {
   constructor(private http: HttpClient) { }
 
   getAll(): Observable<any>{
-     const url = firebaseDbUrl;
+     const url = firebaseDbUrl + '/categories.json';
      return this.http.get(url).pipe(map((results: any)=> {
-          return results.categories;
-     }),map((results: any)=> {
          const newResults = results.filter((category: any)=> {
             return category !== null;
          });

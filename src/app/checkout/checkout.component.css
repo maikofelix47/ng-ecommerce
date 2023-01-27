@@ -9,3 +9,6 @@
 mat-form-field{
     width: 51%;
 }
+.checkout-navigation button{
+  margin-left: 5px;
+}

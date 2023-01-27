@@ -52,7 +52,7 @@
                   <input matInput formControlName="houseAddress" placeholder="Ex. 1 Main St, New York, NY"
                          required>
                 </mat-form-field>
-                <div>
+                <div class="checkout-navigation">
                   <button mat-button matStepperPrevious mat-raised-button color="accent">Back</button>
                   <button mat-button mat-raised-button color="primary" matStepperNext (click)="generateCheckoutSummary()">Next</button>
                 </div>
@@ -81,8 +81,8 @@
                     </mat-list>
                   
               </div>
-              <div>
-                <button mat-button matStepperPrevious>Back</button>
+              <div class="checkout-navigation">
+                <button mat-button mat-raised-button matStepperPrevious  color="accent">Back</button>
                 <button mat-button mat-raised-button color="warn" (click)="stepper.reset()">Reset</button>
                 <button mat-button mat-raised-button color="primary" (click)="completeShopping()">Finish</button>
               </div>
