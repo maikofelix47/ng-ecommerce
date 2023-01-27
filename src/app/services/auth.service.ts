@@ -13,9 +13,7 @@ import {
 
 //models
 
-import {
-  FirebaseUser
-} from '../models/firebase-login-response';
+import { FirebaseUser } from '../models/firebase-login-response';
 import { Observable, Subject } from 'rxjs';
 
 @Injectable({
@@ -28,7 +26,6 @@ export class AuthService {
 
   private signedInUserSub = new Subject();
   public signedInUser$ = this.signedInUserSub.asObservable();
-
 
   constructor() {}
 
@@ -86,10 +83,15 @@ export class AuthService {
       return false;
     }
   }
-  getSignedInUser(){
+  getSignedInUser() {
     const user = localStorage.getItem('user') || null;
-    if(user){
-        return JSON.parse(user);
+    if (user) {
+      return JSON.parse(user);
     }
+  }
+  getUserToken(): string {
+    const user: FirebaseUser = this.getSignedInUser();
+    const userToken = user.stsTokenManager.accessToken;
+    return userToken;
   }
 }

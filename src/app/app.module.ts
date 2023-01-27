@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,7 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // Angular material components
 import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button'; 
+import { MatButtonModule } from '@angular/material/button';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
@@ -18,7 +18,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
-import { MatBadgeModule } from '@angular/material/badge'; 
+import { MatBadgeModule } from '@angular/material/badge';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatSelectModule } from '@angular/material/select';
@@ -47,6 +47,8 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { AppreciationComponent } from './appreciation/appreciation.component';
 import { MainDashboardComponent } from './main-dashboard/main-dashboard.component';
 
+import { TokenInterceptorService } from './services/interceptors/token-interceptor.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -66,7 +68,7 @@ import { MainDashboardComponent } from './main-dashboard/main-dashboard.componen
     RatingComponent,
     CheckoutComponent,
     AppreciationComponent,
-    MainDashboardComponent
+    MainDashboardComponent,
   ],
   imports: [
     BrowserModule,
@@ -88,10 +90,19 @@ import { MainDashboardComponent } from './main-dashboard/main-dashboard.componen
     MatBadgeModule,
     MatDialogModule,
     MatStepperModule,
-    MatSelectModule
-    
+    MatSelectModule,
   ],
-  providers: [ErrorService, CategoryService, ProductDetailsService, ProductsService],
-  bootstrap: [AppComponent]
+  providers: [
+    ErrorService,
+    CategoryService,
+    ProductDetailsService,
+    ProductsService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true,
+    },
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
