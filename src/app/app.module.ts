@@ -22,6 +22,7 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatSelectModule } from '@angular/material/select';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { LoginComponent } from './login/login.component';
 import { LandingComponent } from './landing/landing.component';
@@ -48,6 +49,7 @@ import { AppreciationComponent } from './appreciation/appreciation.component';
 import { MainDashboardComponent } from './main-dashboard/main-dashboard.component';
 
 import { TokenInterceptorService } from './services/interceptors/token-interceptor.service';
+import { LoaderComponent } from './loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -69,6 +71,7 @@ import { TokenInterceptorService } from './services/interceptors/token-intercept
     CheckoutComponent,
     AppreciationComponent,
     MainDashboardComponent,
+    LoaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -91,6 +94,7 @@ import { TokenInterceptorService } from './services/interceptors/token-intercept
     MatDialogModule,
     MatStepperModule,
     MatSelectModule,
+    MatProgressSpinnerModule
   ],
   providers: [
     ErrorService,

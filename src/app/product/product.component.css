@@ -8,11 +8,11 @@
     grid-template-columns: auto auto auto auto;
 }
 .category-card{
-    height: 440px;
+    height: 480px;
     width: 300px;
 }
 .category-card img{
-    max-height: 50%;
+    max-height: 45%;
 }
 .product-btn{
     background-color: #FFF;
