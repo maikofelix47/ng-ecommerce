@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 
 
 import { CategoryService } from '../services/category.service';
+import { LoaderService } from '../services/loader.service';
 
 interface Category{
   name: string;
@@ -19,7 +20,9 @@ export class CategoryComponent implements OnInit{
 
   public categories: Category[] = [];
 
-  constructor(private categoryService: CategoryService, private router: Router){
+  constructor(private categoryService: CategoryService, 
+    private router: Router,
+    private loaderService: LoaderService){
 
   }
 
@@ -28,13 +31,21 @@ export class CategoryComponent implements OnInit{
   }
 
   public getCategories(){
+     this.showLoader();
      this.categoryService.getAll().subscribe((categories: any)=> {
          this.categories = categories;
+         this.hideLoader();
      });
   }
 
   public goToCategory(categoryId: number){
      this.router.navigate([`/category/${categoryId}`]);
+  }
+  public showLoader(){
+    this.loaderService.showLoader();
+  }
+  public hideLoader(){
+     this.loaderService.hideLoader();
   }
 
 }

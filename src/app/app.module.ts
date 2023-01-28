@@ -51,6 +51,8 @@ import { MainDashboardComponent } from './main-dashboard/main-dashboard.componen
 import { TokenInterceptorService } from './services/interceptors/token-interceptor.service';
 import { LoaderComponent } from './loader/loader.component';
 
+import { LoaderService } from './services/loader.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -106,6 +108,7 @@ import { LoaderComponent } from './loader/loader.component';
       useClass: TokenInterceptorService,
       multi: true,
     },
+    LoaderService
   ],
   bootstrap: [AppComponent],
 })

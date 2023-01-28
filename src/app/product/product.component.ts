@@ -5,6 +5,7 @@ import { ProductsService } from '../services/products.service';
 import { ShoppingCartService } from '../services/shopping-cart.service';
 
 import { Product } from '../models/product';
+import { LoaderService } from '../services/loader.service';
 
 @Component({
   selector: 'app-product',
@@ -18,7 +19,8 @@ export class ProductComponent implements OnInit{
   constructor(private productService: ProductsService,
     private route: ActivatedRoute,
     private router: Router,
-    private cartService: ShoppingCartService){
+    private cartService: ShoppingCartService,
+    private loaderService:LoaderService){
 
   }
 
@@ -33,9 +35,11 @@ export class ProductComponent implements OnInit{
   }
 
   getProductsByCategoryId(categoryId: number){
+     this.showLoader();
      this.productService.getProductByCategoryId(categoryId)
      .subscribe((products: Product[])=> {
         this.products = products;
+        this.hideLoader();
      });
   }
 
@@ -47,6 +51,12 @@ export class ProductComponent implements OnInit{
 
    this.cartService.addItemsToCart(product,quantity);
 
+  }
+  public showLoader(){
+    this.loaderService.showLoader();
+  }
+  public hideLoader(){
+     this.loaderService.hideLoader();
   }
 
 }
