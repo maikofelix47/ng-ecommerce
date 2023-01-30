@@ -3,9 +3,13 @@
     padding-right: 10%;
     padding-top: 50px;
 }
+.products-filter-container{
+    display: grid;
+    grid-template-columns: 20% 80%;
+}
 .product-grid-container{
     display: grid;
-    grid-template-columns: auto auto auto auto;
+    grid-template-columns: auto auto auto;
 }
 .category-card{
     height: 480px;

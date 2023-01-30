@@ -52,6 +52,7 @@ import { TokenInterceptorService } from './services/interceptors/token-intercept
 import { LoaderComponent } from './loader/loader.component';
 
 import { LoaderService } from './services/loader.service';
+import { ProductFilterComponent } from './product/product-filter/product-filter.component';
 
 @NgModule({
   declarations: [
@@ -74,6 +75,7 @@ import { LoaderService } from './services/loader.service';
     AppreciationComponent,
     MainDashboardComponent,
     LoaderComponent,
+    ProductFilterComponent,
   ],
   imports: [
     BrowserModule,

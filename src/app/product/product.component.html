@@ -1,7 +1,12 @@
 
 <div class="products-content">
     <h2 class="section-title">Products</h2>
-    <div class="product-grid-container" *ngIf="products.length > 0">
+    <div class="products-filter-container">
+    <div class="product-filter">
+       <app-product-filter></app-product-filter>
+    </div>
+    <div class="products">
+      <div class="product-grid-container" *ngIf="products.length > 0">
       <div class="product-grid-item" *ngFor="let product of products; index as i">
           <mat-card class="category-card">
               <img mat-card-image  src="../../../assets/images/{{product.productImg}}"  alt="{{product.name}}">
@@ -25,5 +30,7 @@
       </div>
        
     </div>
+  </div>
+  </div>
   
   </div>
