@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
 import { ShoppingCartService } from '../services/shopping-cart.service';
@@ -17,7 +18,8 @@ export class NavbarComponent implements OnInit{
   public loggedInUser: any;
 
   constructor(private cartService: ShoppingCartService,
-    private authService: AuthService){
+    private authService: AuthService,
+    private router: Router){
 
   }
 
@@ -31,6 +33,11 @@ export class NavbarComponent implements OnInit{
   }
   private getLoggedInUser(){
       this.loggedInUser = this.authService.getSignedInUser();
+  }
+  public logOut(){
+    this.authService.logout();
+    this.getLoggedInUser();
+    this.router.navigate(['/']);
   }
 
 

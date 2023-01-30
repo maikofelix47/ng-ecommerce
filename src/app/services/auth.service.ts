@@ -66,12 +66,34 @@ export class AuthService {
   }
 
   isAuthorized(): boolean {
-    const user = localStorage.getItem('user') || false;
-    if (user) {
+    return this.isSessionActive();
+  }
+  getSignedInUser() {
+
+    const sessionActive = this.isSessionActive();
+    if(sessionActive){
+
+      const user = localStorage.getItem('user') || null;
+      if (user) {
+        return JSON.parse(user);
+      }
+
+    }else {
+        return {}
+    }
+   
+  }
+  getUserToken(): string {
+    const user: FirebaseUser = this.getSignedInUser();
+    const userToken = user?.stsTokenManager?.accessToken || '';
+    return userToken;
+  }
+  isSessionActive(): boolean{
+    const user = localStorage.getItem('user') || null;
+    if(user){
       const userObj: FirebaseUser = JSON.parse(user);
       const { stsTokenManager } = userObj;
       const expirationTime = new Date(stsTokenManager.expirationTime);
-      
       const now = new Date();
       const timeDiffinMs = now.getTime() - expirationTime.getTime();
       if (timeDiffinMs < 0) {
@@ -79,19 +101,15 @@ export class AuthService {
       } else {
         return false;
       }
-    } else {
+
+    }else{
       return false;
     }
+   
+
   }
-  getSignedInUser() {
-    const user = localStorage.getItem('user') || null;
-    if (user) {
-      return JSON.parse(user);
-    }
-  }
-  getUserToken(): string {
-    const user: FirebaseUser = this.getSignedInUser();
-    const userToken = user.stsTokenManager.accessToken;
-    return userToken;
+
+  logout(){
+      localStorage.removeItem('user');
   }
 }
