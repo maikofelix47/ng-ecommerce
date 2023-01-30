@@ -4,7 +4,7 @@
     <div class="product-grid-container" *ngIf="products.length > 0">
       <div class="product-grid-item" *ngFor="let product of products; index as i">
           <mat-card class="category-card">
-              <img mat-card-image  src="../../../assets/images/{{product.productImg}}"  alt="Photo of a Shiba Inu">
+              <img mat-card-image  src="../../../assets/images/{{product.productImg}}"  alt="{{product.name}}">
               <mat-card-content>
                 <h3 class="product-title">{{product.name}}</h3>
                 <p>Price : {{product.price}}</p>

@@ -3,12 +3,12 @@
     <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
       <mat-icon>menu</mat-icon>
     </button>
-    <span><a [routerLink]="['/']" class="router-link">My Shop</a></span>
+    <span><a [routerLink]="['/']" class="router-link">Elgon Shop</a></span>
     <span class=""></span>
     <span class="example-spacer"></span>
     <span>
       <a [routerLink]="['/shopping-cart']" class="router-link">
-      <mat-icon aria-hidden="false" matBadge="{{itemsInCart$ | async}}" matBadgeColor="warn" aria-label="Shopping cart icon" fontIcon="shopping_cart"></mat-icon> 
+      <mat-icon aria-hidden="false" matBadge="{{itemsInCart$ | async}}" matBadgeColor="warn" aria-label="Shopping cart icon" fontIcon="shopping_cart" *ngIf="loggedInUser?.email"></mat-icon> 
       
      </a>
    </span>
@@ -18,9 +18,10 @@
     <app-search></app-search>
   </span>
 -->
-    <button mat-button [matMenuTriggerFor]="menu">
+    <button mat-button [matMenuTriggerFor]="menu" *ngIf="loggedInUser?.email">
       {{ loggedInUser?.email }} <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="person"></mat-icon>
     </button>
+    <a [routerLink]="['/login']" class="router-link" *ngIf="!loggedInUser?.email">Login</a>
     <mat-menu #menu="matMenu">
     <button mat-menu-item>My Account</button>
     <button mat-menu-item>Orders</button>

@@ -19,10 +19,7 @@ export class ProductsService {
       return this.http.get(url, {
         params: params
       }).pipe(map ((results: any)=> {
-          const products: Product[] = [];
-          if(categoryId in results ){
-            products.push(results[categoryId]);
-          }
+          const products: Product[] = Object.values(results);
           
           return products;
       }));

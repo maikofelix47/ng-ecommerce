@@ -58,7 +58,7 @@
 
           <p></p>
 
-          <button mat-raised-button color="primary" (click)="checkout()">Checkout</button>
+          <button mat-raised-button color="primary" (click)="checkout()" [disabled]="cartItems.length === 0">Checkout</button>
   
         </div>
   
