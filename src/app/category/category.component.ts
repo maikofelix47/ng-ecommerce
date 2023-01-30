@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 
 import { CategoryService } from '../services/category.service';
 import { LoaderService } from '../services/loader.service';
+import { ErrorService } from '../services/shared/error.service';
 
 interface Category{
   name: string;
@@ -22,7 +23,8 @@ export class CategoryComponent implements OnInit{
 
   constructor(private categoryService: CategoryService, 
     private router: Router,
-    private loaderService: LoaderService){
+    private loaderService: LoaderService,
+    private errorService: ErrorService){
 
   }
 
@@ -35,6 +37,9 @@ export class CategoryComponent implements OnInit{
      this.categoryService.getAll().subscribe((categories: any)=> {
          this.categories = categories;
          this.hideLoader();
+     },(error: Error)=> {
+        this.errorService.handleError(error);
+        this.hideLoader();
      });
   }
 

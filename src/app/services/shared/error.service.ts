@@ -25,6 +25,17 @@ export class ErrorService {
       this.errorMessages = [];
       this.errrorMsgsSubject.next(this.errorMessages);
   }
+  handleError(error: any){
+    let errorMsg = {
+      message: ''
+    }
+    if(error?.status === 401){
+        errorMsg.message = 'Unauthorized: Please login again';
+    }
+
+    this.setNewErrorMessage(errorMsg);
+
+  }
 
 
 }

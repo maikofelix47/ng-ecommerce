@@ -69,12 +69,12 @@ export class AuthService {
     const user = localStorage.getItem('user') || false;
     if (user) {
       const userObj: FirebaseUser = JSON.parse(user);
-      const { lastLoginAt } = userObj;
-      const lastLoginDate = new Date(parseInt(lastLoginAt));
+      const { stsTokenManager } = userObj;
+      const expirationTime = new Date(stsTokenManager.expirationTime);
+      
       const now = new Date();
-      const timeDiffInMinutes =
-        (now.getTime() - lastLoginDate.getTime()) / 1000 / 60;
-      if (timeDiffInMinutes < 30) {
+      const timeDiffinMs = now.getTime() - expirationTime.getTime();
+      if (timeDiffinMs < 0) {
         return true;
       } else {
         return false;
