@@ -7,6 +7,8 @@ import { ShoppingCartService } from '../services/shopping-cart.service';
 import { Product } from '../models/product';
 import { LoaderService } from '../services/loader.service';
 
+import { ProductFilterParams } from '../models/product-filter';
+
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
@@ -15,6 +17,13 @@ import { LoaderService } from '../services/loader.service';
 export class ProductComponent implements OnInit{
  public products: Product[] = [];
  public quantity: number = 1;
+ public filterParams: ProductFilterParams = {
+   minPrice: 0,
+   maxPrice: 0,
+   rating: 0,
+ };
+ public filteredProducts: Product[] = [];
+
 
   constructor(private productService: ProductsService,
     private route: ActivatedRoute,
@@ -32,6 +41,13 @@ export class ProductComponent implements OnInit{
             this.getProductsByCategoryId(Number(categoryId));
         }
      });
+
+     this.route.queryParams.subscribe((params: any)=> {
+        if(params){
+           this.filterParams = params;
+           this.filterProducts();
+        }
+     });
   }
 
   getProductsByCategoryId(categoryId: number){
@@ -39,6 +55,7 @@ export class ProductComponent implements OnInit{
      this.productService.getProductByCategoryId(categoryId)
      .subscribe((products: Product[])=> {
         this.products = products;
+        this.filterProducts();
         this.hideLoader();
      });
   }
@@ -57,6 +74,21 @@ export class ProductComponent implements OnInit{
   }
   public hideLoader(){
      this.loaderService.hideLoader();
+  }
+  private filterProducts(){
+   const filterParams = this.filterParams;
+     if('maxPrice' in filterParams){
+
+      this.filteredProducts = this.products.filter((product: Product)=> {
+           return (product.price >= filterParams.minPrice 
+           && product.price <= filterParams.maxPrice
+           && product.rating >= filterParams.rating)
+      });
+
+     }else{
+        this.filteredProducts = this.products;
+     }
+     
   }
 
 }

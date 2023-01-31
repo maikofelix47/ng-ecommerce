@@ -6,8 +6,8 @@
        <app-product-filter></app-product-filter>
     </div>
     <div class="products">
-      <div class="product-grid-container" *ngIf="products.length > 0">
-      <div class="product-grid-item" *ngFor="let product of products; index as i">
+      <div class="product-grid-container" *ngIf="filteredProducts.length > 0">
+      <div class="product-grid-item" *ngFor="let product of filteredProducts; index as i">
           <mat-card class="category-card">
               <img mat-card-image  src="../../../assets/images/{{product.productImg}}"  alt="{{product.name}}">
               <mat-card-content>
