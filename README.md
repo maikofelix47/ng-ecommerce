@@ -8,6 +8,10 @@ This an Angular Project for an E-Commerce Store front.
 1. Node v12+
 2. Angular v15+
 3. Angular Material
+4. Firebase Realtime Database
+
+## Authentication
+The project uses Firebase realtime database SDK for signup and signin process. A user token is sent back as part of the response and the system uses it for authetication. The token is sent as an auth payload for each request to Firebase.
 
 ## Project Set up
 
