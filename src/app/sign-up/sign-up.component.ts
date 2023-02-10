@@ -24,18 +24,9 @@ export class SignUpComponent {
 
   public signUp(){
 
-    this.authService.signUpToFirebaseWithEmailAndPassword(this.email, this.password)
-    .then((result: string)=> {
-          this.router.navigate(['/login']);
-    })
-    .catch((error: ErrorMessage)=> {
-      console.log('Error', error);
-      const { message } = error;
-      const errorMessage: ErrorMessage = {
-         message
-      };
-      this.errorService.setNewErrorMessage(errorMessage);
-    })
+    this.authService.signUp(this.email, this.password).subscribe((result: any)=> {
+          console.log('result', result);
+    });
 
   }
 

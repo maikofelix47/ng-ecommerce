@@ -22,22 +22,17 @@ export class LoginComponent {
   }
   public login(){
      this.resetErrorMessages();
-     this.authService.signInToFireBaseWithEmailAndPassword(this.email,this.password).then((data)=> {
+     this.authService.login(this.email, this.password).subscribe((result: any)=> {
 
-        // navigate to home page
-        this.router.navigate(['']);
+     },(error: any)=> {
 
-     }).catch((error)=> {
-
-       console.log('Error', error);
-       const { message } = error;
-       const errorMessage: ErrorMessage = {
-          message
-       };
-       this.errorService.setNewErrorMessage(errorMessage);
-
-        
-     });
+          const { message } = error?.error;
+          const errorMessage: ErrorMessage = {
+              message
+          };
+          this.errorService.setNewErrorMessage(errorMessage);
+            
+        });
   }
 
   public resetErrorMessages(){

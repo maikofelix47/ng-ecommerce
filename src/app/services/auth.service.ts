@@ -1,20 +1,20 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
-import { environment } from '../../../environment';
+import { environment, nestBaseUrl } from '../../../environment';
 
 //firebase
 import { initializeApp } from 'firebase/app';
 import {
   getAuth,
   signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
   UserCredential,
 } from 'firebase/auth';
 
 //models
 
 import { FirebaseUser } from '../models/firebase-login-response';
-import { Observable, Subject } from 'rxjs';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -26,24 +26,13 @@ export class AuthService {
 
   private signedInUserSub = new Subject();
   public signedInUser$ = this.signedInUserSub.asObservable();
+  private backendBaseUrl = nestBaseUrl;
 
-  constructor() {}
+  constructor(
+    private http: HttpClient
+  ) {}
 
-  signUpToFirebaseWithEmailAndPassword(
-    email: string,
-    password: string
-  ): Promise<string> {
-    return new Promise((resolve, reject) => {
-      createUserWithEmailAndPassword(this.auth, email, password)
-        .then((userCredential: UserCredential) => {
-          resolve('success');
-        })
-        .catch((error) => {
-          console.log('signup error', error);
-          reject(error);
-        });
-    });
-  }
+ 
 
   signInToFireBaseWithEmailAndPassword(
     email: string,
@@ -111,5 +100,24 @@ export class AuthService {
 
   logout(){
       localStorage.removeItem('user');
+  }
+
+  signUp(email: string, password: string){
+      const url = this.backendBaseUrl + '/auth/sign-up';
+      const payload= {
+        email,
+        password
+      };
+      return this.http.post(url,payload);
+  }
+  login(email: string, password: string){
+
+    const url = this.backendBaseUrl + '/auth/sign-in';
+    const payload= {
+      email,
+      password
+    };
+    return this.http.post(url,payload);
+
   }
 }
