@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 
 
 import { ErrorMessage } from '../models/error-messages';
+import { LoginToken } from '../models/login-token';
 
 import { AuthService } from '../services/auth.service';
 import { ErrorService } from '../services/shared/error.service';
@@ -22,11 +23,11 @@ export class LoginComponent {
   }
   public login(){
      this.resetErrorMessages();
-     this.authService.login(this.email, this.password).subscribe((result: any)=> {
-
+     this.authService.login(this.email, this.password).subscribe((result: LoginToken)=> {
+         this.authService.setCurrentUser(this.email,result);
+         this.router.navigate(['/']);
      },(error: any)=> {
-
-          const { message } = error?.error;
+          const { message } = error?.error || 'An error occured';
           const errorMessage: ErrorMessage = {
               message
           };
