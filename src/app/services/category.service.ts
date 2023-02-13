@@ -6,6 +6,7 @@ import { filter, map } from 'rxjs';
 import { firebaseDbUrl } from 'environment';
 import { nestBaseUrl } from 'environment';
 import { Observable } from 'rxjs';
+import { Category } from '../models/category';
 
 @Injectable()
 export class CategoryService {
@@ -15,5 +16,9 @@ export class CategoryService {
   getAll(): Observable<any>{
      const url = nestBaseUrl + '/category';
      return this.http.get(url);
+  }
+  createCategory(payload: Category){
+        const url = nestBaseUrl + '/category';
+        return this.http.post(url, payload);
   }
 }

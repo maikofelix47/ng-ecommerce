@@ -23,6 +23,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatSelectModule } from '@angular/material/select';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatTabsModule } from '@angular/material/tabs'; 
 
 import { LoginComponent } from './login/login.component';
 import { LandingComponent } from './landing/landing.component';
@@ -53,6 +55,7 @@ import { LoaderComponent } from './loader/loader.component';
 
 import { LoaderService } from './services/loader.service';
 import { ProductFilterComponent } from './product/product-filter/product-filter.component';
+import { CreateCategoryComponent } from './category/create-category/create-category.component';
 
 @NgModule({
   declarations: [
@@ -76,6 +79,7 @@ import { ProductFilterComponent } from './product/product-filter/product-filter.
     MainDashboardComponent,
     LoaderComponent,
     ProductFilterComponent,
+    CreateCategoryComponent,
   ],
   imports: [
     BrowserModule,
@@ -98,7 +102,9 @@ import { ProductFilterComponent } from './product/product-filter/product-filter.
     MatDialogModule,
     MatStepperModule,
     MatSelectModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatSidenavModule,
+    MatTabsModule
   ],
   providers: [
     ErrorService,

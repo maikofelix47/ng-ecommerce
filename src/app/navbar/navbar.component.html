@@ -27,5 +27,12 @@
     <button mat-menu-item>Orders</button>
     <button mat-menu-item (click)="logOut()">Log out</button>
     </mat-menu>
+    <button mat-button [matMenuTriggerFor]="adminMenu">
+     Admin <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="person"></mat-icon>
+    </button>
+    <mat-menu #adminMenu="matMenu">
+      <a [routerLink]="['/create-category']" class="router-link" mat-menu-item>Categories</a>
+      <button mat-menu-item>Products</button>
+    </mat-menu>
   </mat-toolbar>
   </nav>

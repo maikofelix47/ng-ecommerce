@@ -1,0 +1,28 @@
+<div class="create-category-grid-container">
+    <div class="create-category-grid">
+
+        <mat-tab-group>
+            <mat-tab label="Create Category">
+                <div class="create-category-form">
+                   <h2>Create Category</h2>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Name : </mat-label>
+                        <input matInput [(ngModel)]="name" type="text">
+                      </mat-form-field>
+                      <mat-form-field appearance="outline">
+                        <mat-label>Description</mat-label>
+                        <textarea matInput [(ngModel)]="description"></textarea>
+                      </mat-form-field>
+                        <button mat-button mat-raised-button color="primary" (click)="submitCategoryData()">Create</button>
+                      
+                </div>
+                
+                  
+            </mat-tab>
+            <mat-tab label="Categories">Categories</mat-tab>
+        </mat-tab-group>
+
+    </div>
+</div>
+
+  
