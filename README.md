@@ -8,10 +8,17 @@ This an Angular Project for an E-Commerce Store front.
 1. Node v12+
 2. Angular v15+
 3. Angular Material
-4. Firebase Realtime Database
+4. NestJS Backend `https://github.com/maikofelix47/nest-ec-backend`
 
 ## Authentication
-The project uses Firebase realtime database SDK for signup and signin process. A user token is sent back as part of the response and the system uses it for authetication. The token is sent as an auth payload for each request to Firebase.
+The project uses a NestJS backend. On successfull A user token is sent back as part of the response and the system uses it for authetication. The token is sent as an auth payload for each request to the backend.
+
+`
+headers': {
+    'Authorization': 'Bearer accessToken'
+}
+
+`
 
 ## Project Set up
 
@@ -20,6 +27,7 @@ The project uses Firebase realtime database SDK for signup and signin process. A
 3. Navigate into project folder and run `npm install`
 4. Run the project `ng serve`
 5. Open any broswer and navigate to `http://localhost:4200`
+6. Fork the project `https://github.com/maikofelix47/nest-ec-backend` and set it up
 
 ## Development server
 
