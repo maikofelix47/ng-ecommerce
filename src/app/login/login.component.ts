@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 
 
 import { ErrorMessage } from '../models/error-messages';
+import { LoginToken } from '../models/login-token';
 
 import { AuthService } from '../services/auth.service';
 import { ErrorService } from '../services/shared/error.service';
@@ -22,22 +23,17 @@ export class LoginComponent {
   }
   public login(){
      this.resetErrorMessages();
-     this.authService.signInToFireBaseWithEmailAndPassword(this.email,this.password).then((data)=> {
-
-        // navigate to home page
-        this.router.navigate(['']);
-
-     }).catch((error)=> {
-
-       console.log('Error', error);
-       const { message } = error;
-       const errorMessage: ErrorMessage = {
-          message
-       };
-       this.errorService.setNewErrorMessage(errorMessage);
-
-        
-     });
+     this.authService.login(this.email, this.password).subscribe((result: LoginToken)=> {
+         this.authService.setCurrentUser(this.email,result);
+         this.router.navigate(['/']);
+     },(error: any)=> {
+          const { message } = error?.error || 'An error occured';
+          const errorMessage: ErrorMessage = {
+              message
+          };
+          this.errorService.setNewErrorMessage(errorMessage);
+            
+        });
   }
 
   public resetErrorMessages(){

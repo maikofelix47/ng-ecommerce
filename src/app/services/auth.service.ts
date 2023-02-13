@@ -1,99 +1,50 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
-import { environment } from '../../../environment';
+import { Observable, Subject } from 'rxjs';
 
-//firebase
-import { initializeApp } from 'firebase/app';
-import {
-  getAuth,
-  signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
-  UserCredential,
-} from 'firebase/auth';
+import { nestBaseUrl } from '../../../environment';
 
 //models
 
-import { FirebaseUser } from '../models/firebase-login-response';
-import { Observable, Subject } from 'rxjs';
+import { LoginToken } from '../models/login-token';
+import { CurrentUser } from '../models/current-user';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  public app = initializeApp(environment.firebase);
-
-  public auth = getAuth(this.app);
-
   private signedInUserSub = new Subject();
   public signedInUser$ = this.signedInUserSub.asObservable();
+  private backendBaseUrl = nestBaseUrl;
 
-  constructor() {}
-
-  signUpToFirebaseWithEmailAndPassword(
-    email: string,
-    password: string
-  ): Promise<string> {
-    return new Promise((resolve, reject) => {
-      createUserWithEmailAndPassword(this.auth, email, password)
-        .then((userCredential: UserCredential) => {
-          resolve('success');
-        })
-        .catch((error) => {
-          console.log('signup error', error);
-          reject(error);
-        });
-    });
-  }
-
-  signInToFireBaseWithEmailAndPassword(
-    email: string,
-    password: string
-  ): Promise<string> {
-    return new Promise((resolve, reject) => {
-      signInWithEmailAndPassword(this.auth, email, password)
-        .then((userCredential: UserCredential) => {
-          // Signed in
-          const { user } = userCredential;
-          localStorage.setItem('user', JSON.stringify(user));
-          this.signedInUserSub.next(user);
-          resolve('success');
-        })
-        .catch((error) => {
-          console.log('error', error);
-          reject(error);
-        });
-    });
-  }
+  constructor(private http: HttpClient) {}
 
   isAuthorized(): boolean {
     return this.isSessionActive();
   }
   getSignedInUser() {
-
     const sessionActive = this.isSessionActive();
-    if(sessionActive){
-
+    if (sessionActive) {
       const user = localStorage.getItem('user') || null;
       if (user) {
         return JSON.parse(user);
       }
-
-    }else {
-        return {}
+    } else {
+      return {};
     }
-   
   }
   getUserToken(): string {
-    const user: FirebaseUser = this.getSignedInUser();
-    const userToken = user?.stsTokenManager?.accessToken || '';
+    const user: CurrentUser = this.getSignedInUser();
+    const userToken = user?.sessionToken?.access_token || '';
     return userToken;
   }
-  isSessionActive(): boolean{
+  isSessionActive(): boolean {
     const user = localStorage.getItem('user') || null;
-    if(user){
-      const userObj: FirebaseUser = JSON.parse(user);
-      const { stsTokenManager } = userObj;
-      const expirationTime = new Date(stsTokenManager.expirationTime);
+    if (user) {
+      const userObj: CurrentUser = JSON.parse(user);
+      const { token_expiration } = userObj.sessionToken;
+      const expirationTime = new Date(token_expiration);
       const now = new Date();
       const timeDiffinMs = now.getTime() - expirationTime.getTime();
       if (timeDiffinMs < 0) {
@@ -101,15 +52,38 @@ export class AuthService {
       } else {
         return false;
       }
-
-    }else{
+    } else {
       return false;
     }
-   
-
   }
 
-  logout(){
-      localStorage.removeItem('user');
+  logout() {
+    localStorage.removeItem('user');
+  }
+
+  signUp(email: string, password: string) {
+    const url = this.backendBaseUrl + '/auth/sign-up';
+    const payload = {
+      email,
+      password,
+    };
+    return this.http.post(url, payload);
+  }
+  login(email: string, password: string): Observable<any> {
+    const url = this.backendBaseUrl + '/auth/sign-in';
+    const payload = {
+      email,
+      password,
+    };
+    return this.http.post(url, payload);
+  }
+  setCurrentUser(email: string, tokenObj: LoginToken) {
+    const user: CurrentUser = {
+      email,
+      sessionToken: tokenObj,
+    };
+
+    localStorage.setItem('user', JSON.stringify(user));
+    this.signedInUserSub.next(user);
   }
 }
