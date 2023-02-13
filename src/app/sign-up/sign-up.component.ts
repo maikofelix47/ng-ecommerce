@@ -9,25 +9,29 @@ import { ErrorService } from '../services/shared/error.service';
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
-  styleUrls: ['./sign-up.component.css']
+  styleUrls: ['./sign-up.component.css'],
 })
 export class SignUpComponent {
-  public email  = '';
+  public email = '';
   public password = '';
 
-  constructor(private authService: AuthService, 
+  constructor(
+    private authService: AuthService,
     private errorService: ErrorService,
     private router: Router
-    ){
+  ) {}
 
+  public signUp() {
+    this.authService.signUp(this.email, this.password).subscribe(
+      (result: any) => {
+        this.router.navigate(['/login']);
+      },
+      (error: ErrorMessage[]) => {
+        this.errorService.setNewErrorMessage({
+          message:
+            error[0]?.message || 'Sign up was Unsuccessfull, please try agin',
+        });
+      }
+    );
   }
-
-  public signUp(){
-
-    this.authService.signUp(this.email, this.password).subscribe((result: any)=> {
-          console.log('result', result);
-    });
-
-  }
-
 }
