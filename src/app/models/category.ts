@@ -1,5 +1,16 @@
-export interface Category{
+export interface Category {
+  name: string;
+  description: string;
+  featureImg?: string;
+}
+
+export interface CreateCategoryPayload {
+  name: string;
+  description: string;
+  file: {
     name: string;
-    description: string;
-    featureImg?: string;
+    lastModilfied: number;
+    size: number;
+    type: string;
+  };
 }
