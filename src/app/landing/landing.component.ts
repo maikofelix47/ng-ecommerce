@@ -11,6 +11,5 @@ export class LandingComponent implements OnInit{
     }
 
     public ngOnInit(): void {
-       
     }
 }

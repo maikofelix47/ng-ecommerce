@@ -10,59 +10,38 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgMaterialModule } from './ng-material/ng-material.module';
 
 import { LoginComponent } from './login/login.component';
-import { LandingComponent } from './landing/landing.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { MainBannerComponent } from './main-banner/main-banner.component';
+
 import { ErrorComponent } from './error/error.component';
 
 import { ErrorService } from './services/shared/error.service';
 import { SignUpComponent } from './sign-up/sign-up.component';
-import { CategoryComponent } from './category/category.component';
 import { CategoryService } from './services/category.service';
 import { SearchComponent } from './search/search.component';
-import { ProductComponent } from './product/product.component';
-import { ProductDetailsComponent } from './product/product-details/product-details.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+
 
 import { ProductDetailsService } from './services/product-details.service';
 import { ProductsService } from './services/products.service';
-import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { ShoppingCartDialogComponent } from './shopping-cart/shopping-cart-dialog/shopping-cart-dialog.component';
-import { RatingComponent } from './rating/rating.component';
-import { CheckoutComponent } from './checkout/checkout.component';
-import { AppreciationComponent } from './appreciation/appreciation.component';
-import { MainDashboardComponent } from './main-dashboard/main-dashboard.component';
+
 
 import { TokenInterceptorService } from './services/interceptors/token-interceptor.service';
 import { LoaderComponent } from './loader/loader.component';
 
 import { LoaderService } from './services/loader.service';
-import { ProductFilterComponent } from './product/product-filter/product-filter.component';
+
 
 import { AdminModule } from './admin-dashboard/admin.module';
+import { UserDashboardModule } from './user-dashboard/user-dashboard.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    LandingComponent,
-    MainBannerComponent,
     ErrorComponent,
     SignUpComponent,
-    CategoryComponent,
     SearchComponent,
-    ProductComponent,
-    ProductDetailsComponent,
-    PageNotFoundComponent,
-    ShoppingCartComponent,
     ShoppingCartDialogComponent,
-    RatingComponent,
-    CheckoutComponent,
-    AppreciationComponent,
-    MainDashboardComponent,
     LoaderComponent,
-    ProductFilterComponent,
-    NavbarComponent,
   ],
   imports: [
     BrowserModule,
@@ -71,6 +50,7 @@ import { AdminModule } from './admin-dashboard/admin.module';
     ReactiveFormsModule,
     HttpClientModule,
     AdminModule,
+    UserDashboardModule,
     NgMaterialModule,
     AppRoutingModule,
   ],
