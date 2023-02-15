@@ -14,7 +14,7 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { AppreciationComponent } from './appreciation/appreciation.component';
 import { MainDashboardComponent } from './main-dashboard/main-dashboard.component';
-import { CreateCategoryComponent } from './category/create-category/create-category.component';
+import { AdminComponent } from './admin-dashboard/admin.component';
 
 const routes: Routes = [
   {
@@ -33,11 +33,6 @@ const routes: Routes = [
         path: 'category/:id',
         component: ProductComponent,
         title: 'Category'
-      },
-      {
-        path: 'create-category',
-        component: CreateCategoryComponent,
-        title: 'Create Category'
       },
       {
         path: 'product/:id',

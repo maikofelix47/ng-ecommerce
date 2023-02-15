@@ -7,24 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-// Angular material components
-import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
-import { MatGridListModule } from '@angular/material/grid-list';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatIconModule } from '@angular/material/icon';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatDividerModule } from '@angular/material/divider';
-import { MatListModule } from '@angular/material/list';
-import { MatCardModule } from '@angular/material/card';
-import { MatTableModule } from '@angular/material/table';
-import { MatBadgeModule } from '@angular/material/badge';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatStepperModule } from '@angular/material/stepper';
-import { MatSelectModule } from '@angular/material/select';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatTabsModule } from '@angular/material/tabs'; 
+import { NgMaterialModule } from './ng-material/ng-material.module';
 
 import { LoginComponent } from './login/login.component';
 import { LandingComponent } from './landing/landing.component';
@@ -55,14 +38,14 @@ import { LoaderComponent } from './loader/loader.component';
 
 import { LoaderService } from './services/loader.service';
 import { ProductFilterComponent } from './product/product-filter/product-filter.component';
-import { CreateCategoryComponent } from './category/create-category/create-category.component';
+
+import { AdminModule } from './admin-dashboard/admin.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     LandingComponent,
-    NavbarComponent,
     MainBannerComponent,
     ErrorComponent,
     SignUpComponent,
@@ -79,32 +62,17 @@ import { CreateCategoryComponent } from './category/create-category/create-categ
     MainDashboardComponent,
     LoaderComponent,
     ProductFilterComponent,
-    CreateCategoryComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
-    MatInputModule,
     FormsModule,
     ReactiveFormsModule,
-    MatButtonModule,
-    MatGridListModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatMenuModule,
-    MatDividerModule,
-    MatListModule,
     HttpClientModule,
-    MatCardModule,
-    MatTableModule,
-    MatBadgeModule,
-    MatDialogModule,
-    MatStepperModule,
-    MatSelectModule,
-    MatProgressSpinnerModule,
-    MatSidenavModule,
-    MatTabsModule
+    AdminModule,
+    NgMaterialModule,
+    AppRoutingModule,
   ],
   providers: [
     ErrorService,
@@ -118,6 +86,7 @@ import { CreateCategoryComponent } from './category/create-category/create-categ
     },
     LoaderService
   ],
+  exports: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
