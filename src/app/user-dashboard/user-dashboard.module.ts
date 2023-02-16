@@ -18,6 +18,7 @@ import { ProductsService } from '../services/products.service';
 import { MainBannerComponent } from '../main-banner/main-banner.component';
 import { CategoryComponent } from '../category/category.component';
 import { ProductFilterComponent } from '../product/product-filter/product-filter.component';
+import { NavbarModule } from '../navbar/navbar.module';
 
 
 @NgModule({
@@ -29,7 +30,6 @@ import { ProductFilterComponent } from '../product/product-filter/product-filter
     ShoppingCartComponent,
     CheckoutComponent,
     AppreciationComponent,
-    NavbarComponent,
     RatingComponent,
     MainBannerComponent,
     CategoryComponent,
@@ -40,7 +40,8 @@ import { ProductFilterComponent } from '../product/product-filter/product-filter
     UserDashboardRoutingModule,
     NgMaterialModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NavbarModule
   ],
   providers: [AuthGuardService, ProductsService]
 })

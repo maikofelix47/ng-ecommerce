@@ -8,6 +8,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgMaterialModule } from '../ng-material/ng-material.module';
+import { NavbarModule } from '../navbar/navbar.module';
 
 
 
@@ -22,7 +23,8 @@ import { NgMaterialModule } from '../ng-material/ng-material.module';
     MatTabsModule,
     FormsModule,
     ReactiveFormsModule,
-    NgMaterialModule
+    NgMaterialModule,
+    NavbarModule
   ]
 })
 export class AdminModule { }
