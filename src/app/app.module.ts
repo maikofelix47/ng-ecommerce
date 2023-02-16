@@ -41,7 +41,7 @@ import { UserDashboardModule } from './user-dashboard/user-dashboard.module';
     SignUpComponent,
     SearchComponent,
     ShoppingCartDialogComponent,
-    LoaderComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,

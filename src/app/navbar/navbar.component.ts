@@ -3,8 +3,6 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
 import { ShoppingCartService } from '../services/shopping-cart.service';
-
-import { FirebaseUser } from '../models/firebase-login-response';
 import { AuthService } from '../services/auth.service';
 
 @Component({

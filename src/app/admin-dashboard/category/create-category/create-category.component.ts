@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { CategoryService } from 'src/app/services/category.service';
 
-import { CreateCategoryPayload } from '../../models/category';
+import { CreateCategoryPayload } from '../../../models/category';
 
 @Component({
   selector: 'app-create-category',
