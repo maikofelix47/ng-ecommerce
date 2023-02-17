@@ -10,6 +10,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NgMaterialModule } from '../ng-material/ng-material.module';
 import { NavbarModule } from '../navbar/navbar.module';
 import { CategoryListComponent } from './category/category-list/category-list.component';
+import { AdminProductComponent } from './product/product.component';
+import { CreateProductComponent } from './product/create-product/create-product.component';
 
 
 
@@ -17,7 +19,9 @@ import { CategoryListComponent } from './category/category-list/category-list.co
   declarations: [
     AdminComponent,
     CreateCategoryComponent,
-    CategoryListComponent
+    CategoryListComponent,
+    AdminProductComponent,
+    CreateProductComponent
   ],
   imports: [
     AdminRoutingModule,
