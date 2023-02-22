@@ -4,7 +4,7 @@ import { AdminComponent } from './admin.component';
 
 import { AdminRoutingModule } from './admin-routing/admin-routing.module';
 import { CreateCategoryComponent } from './category/create-category/create-category.component';
-import { MatTabsModule } from '@angular/material/tabs'; 
+import { MatTabsModule } from '@angular/material/tabs';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgMaterialModule } from '../ng-material/ng-material.module';
@@ -12,8 +12,9 @@ import { NavbarModule } from '../navbar/navbar.module';
 import { CategoryListComponent } from './category/category-list/category-list.component';
 import { AdminProductComponent } from './product/product.component';
 import { CreateProductComponent } from './product/create-product/create-product.component';
-
-
+import { SubCategoriesComponent } from './sub-categories/sub-categories.component';
+import { SubCategoryListComponent } from './sub-categories/sub-category-list/sub-category-list.component';
+import { CreateSubCategoryComponent } from './sub-categories/create-sub-category/create-sub-category.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,10 @@ import { CreateProductComponent } from './product/create-product/create-product.
     CreateCategoryComponent,
     CategoryListComponent,
     AdminProductComponent,
-    CreateProductComponent
+    CreateProductComponent,
+    SubCategoriesComponent,
+    SubCategoryListComponent,
+    CreateSubCategoryComponent,
   ],
   imports: [
     AdminRoutingModule,
@@ -30,7 +34,7 @@ import { CreateProductComponent } from './product/create-product/create-product.
     FormsModule,
     ReactiveFormsModule,
     NgMaterialModule,
-    NavbarModule
-  ]
+    NavbarModule,
+  ],
 })
-export class AdminModule { }
+export class AdminModule {}

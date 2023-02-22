@@ -4,6 +4,7 @@ import { AdminComponent } from '../admin.component';
 import { CreateCategoryComponent } from '../category/create-category/create-category.component';
 import { AuthGuardService } from 'src/app/services/auth-guard.service';
 import { AdminProductComponent } from '../product/product.component';
+import { SubCategoriesComponent } from '../sub-categories/sub-categories.component';
 
 const routes: Routes = [
   {
@@ -14,22 +15,24 @@ const routes: Routes = [
       {
         path: 'category',
         component: CreateCategoryComponent,
-        title: 'Create Category'
+        title: 'Create Category',
       },
       {
         path: 'product',
         component: AdminProductComponent,
         title: 'Products',
-      }
-    ]
-  }
+      },
+      {
+        path: 'sub-category',
+        component: SubCategoriesComponent,
+        title: 'Sub-Categories',
+      },
+    ],
+  },
 ];
 
-
 @NgModule({
-  imports: [
-    RouterModule.forChild(routes)
-  ],
-  exports: [RouterModule]
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule],
 })
-export class AdminRoutingModule { }
+export class AdminRoutingModule {}

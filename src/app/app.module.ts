@@ -32,6 +32,7 @@ import { LoaderService } from './services/loader.service';
 
 import { AdminModule } from './admin-dashboard/admin.module';
 import { UserDashboardModule } from './user-dashboard/user-dashboard.module';
+import { SubCategoryService } from './services/sub-category.service';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { UserDashboardModule } from './user-dashboard/user-dashboard.module';
       useClass: TokenInterceptorService,
       multi: true,
     },
-    LoaderService
+    LoaderService,
+    SubCategoryService
   ],
   exports: [],
   bootstrap: [AppComponent],
