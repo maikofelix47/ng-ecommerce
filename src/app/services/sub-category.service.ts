@@ -22,4 +22,8 @@ export class SubCategoryService {
   ): Observable<Category> {
     return this.http.post<SubCategory>(this.url, createSubCategoryPayload);
   }
+  getSubCategoriesByCategoryId(categoryId: string) {
+    const subUrl = this.url + `/category/${categoryId}`;
+    return this.http.get<SubCategory[]>(subUrl);
+  }
 }

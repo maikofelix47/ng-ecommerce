@@ -6,4 +6,6 @@ export interface Product{
     inStock: number;
     productImg: string;
     rating: number;
+    subCategoryId: number;
+    description: string;
 }
