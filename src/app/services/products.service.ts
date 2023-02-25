@@ -27,8 +27,6 @@ export class ProductsService {
 
   createProduct(product: Partial<Product>): Observable<Product> {
     const url = this.productUrl;
-    return this.http.post<Product>(url, {
-      params: product,
-    });
+    return this.http.post<Product>(url,product);
   }
 }
