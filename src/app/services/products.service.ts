@@ -29,4 +29,9 @@ export class ProductsService {
     const url = this.productUrl;
     return this.http.post<Product>(url,product);
   }
+
+  getProducts(): Observable<Product[]>{
+    const url = this.productUrl;
+    return this.http.get<Product[]>(url);
+  }
 }

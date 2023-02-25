@@ -16,6 +16,7 @@ import { SubCategoriesComponent } from './sub-categories/sub-categories.componen
 import { SubCategoryListComponent } from './sub-categories/sub-category-list/sub-category-list.component';
 import { CreateSubCategoryComponent } from './sub-categories/create-sub-category/create-sub-category.component';
 import { AlertModule } from '../alert/alert.module';
+import { AdminProductListComponent } from './product/admin-product-list/admin-product-list.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { AlertModule } from '../alert/alert.module';
     SubCategoriesComponent,
     SubCategoryListComponent,
     CreateSubCategoryComponent,
+    AdminProductListComponent,
   ],
   imports: [
     AdminRoutingModule,

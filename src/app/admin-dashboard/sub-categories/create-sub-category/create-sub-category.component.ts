@@ -31,8 +31,7 @@ export class CreateSubCategoryComponent implements OnInit {
 
   getCategories() {
     this.categories$ = this.categoryService
-      .getAll()
-      .pipe(tap((value) => console.log('categories', value)));
+      .getAll();
   }
 
   public submitData() {

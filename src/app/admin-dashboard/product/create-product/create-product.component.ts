@@ -64,6 +64,7 @@ export class CreateProductComponent implements OnInit {
       this.alertService.alert({
         message
       });
+      this.createProductForm.reset();
     });
   }
 }
