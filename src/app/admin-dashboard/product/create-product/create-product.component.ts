@@ -7,6 +7,7 @@ import { CategoryService } from '../../../services/category.service';
 import { SubCategoryService } from '../../../services/sub-category.service';
 import { ProductsService } from 'src/app/services/products.service';
 import { Product } from '../../../models/product';
+import { AlertService } from 'src/app/services/shared/alert.service';
 
 @Component({
   selector: 'app-create-product',
@@ -29,7 +30,8 @@ export class CreateProductComponent implements OnInit {
   constructor(
     private categoryService: CategoryService,
     private subCategoryService: SubCategoryService,
-    private productsService: ProductsService
+    private productsService: ProductsService,
+    private alertService: AlertService
   ) {}
 
   ngOnInit(): void {
@@ -58,7 +60,10 @@ export class CreateProductComponent implements OnInit {
       inStock: formData.inStock ? formData.inStock : 0,
     };
     this.productsService.createProduct(payLoad).subscribe((result) => {
-      console.log('results', result);
+      const message = 'Product Succesfully Created';
+      this.alertService.alert({
+        message
+      });
     });
   }
 }

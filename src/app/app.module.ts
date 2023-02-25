@@ -33,6 +33,7 @@ import { LoaderService } from './services/loader.service';
 import { AdminModule } from './admin-dashboard/admin.module';
 import { UserDashboardModule } from './user-dashboard/user-dashboard.module';
 import { SubCategoryService } from './services/sub-category.service';
+import { AlertModule } from './alert/alert.module';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,7 @@ import { SubCategoryService } from './services/sub-category.service';
     SignUpComponent,
     SearchComponent,
     ShoppingCartDialogComponent,
-    LoaderComponent
+    LoaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,6 +55,7 @@ import { SubCategoryService } from './services/sub-category.service';
     UserDashboardModule,
     NgMaterialModule,
     AppRoutingModule,
+    AlertModule
   ],
   providers: [
     ErrorService,
