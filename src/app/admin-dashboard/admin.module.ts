@@ -17,7 +17,7 @@ import { SubCategoryListComponent } from './sub-categories/sub-category-list/sub
 import { CreateSubCategoryComponent } from './sub-categories/create-sub-category/create-sub-category.component';
 import { AlertModule } from '../alert/alert.module';
 import { AdminProductListComponent } from './product/admin-product-list/admin-product-list.component';
-
+import { TableListModule } from '../table-list/table-list.module';
 @NgModule({
   declarations: [
     AdminComponent,
@@ -38,7 +38,8 @@ import { AdminProductListComponent } from './product/admin-product-list/admin-pr
     ReactiveFormsModule,
     NgMaterialModule,
     NavbarModule,
-    AlertModule
+    AlertModule,
+    TableListModule
   ],
 })
 export class AdminModule {}

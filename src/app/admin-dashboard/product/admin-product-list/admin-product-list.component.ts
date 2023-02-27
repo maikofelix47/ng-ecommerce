@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { ProductsService } from 'src/app/services/products.service';
 import { Product } from '../../../models/product';
+import { ColumnDefs } from 'src/app/models/table-list';
 
 @Component({
   selector: 'app-admin-product-list',
@@ -10,9 +11,33 @@ import { Product } from '../../../models/product';
 })
 export class AdminProductListComponent  implements OnInit{
 
-    public displayedColumns: string[] = ['id', 'name' ,'price', 'inStock', 'action'];
+    public title = 'Product List';
+    public displayedColumns: string[] = ['id', 'name' ,'price', 'inStock'];
 
-     products$!: Observable<Product[]>;
+    public columnDefs: ColumnDefs[] = [
+      {
+        columnDef: 'id',
+        headerCellDef: 'No',
+        matCellDef: 'id'
+      },
+      {
+        columnDef: 'name',
+        headerCellDef: 'Name',
+        matCellDef: 'name'
+      },
+      {
+        columnDef: 'price',
+        headerCellDef: 'Price',
+        matCellDef: 'price'
+      },
+      {
+        columnDef: 'inStock',
+        headerCellDef: 'In Stock',
+        matCellDef: 'inStock'
+      }
+    ];
+
+     products$: Observable<Product[]> = of([]);
      constructor(private productsService: ProductsService){
      }
 

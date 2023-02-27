@@ -34,6 +34,7 @@ import { AdminModule } from './admin-dashboard/admin.module';
 import { UserDashboardModule } from './user-dashboard/user-dashboard.module';
 import { SubCategoryService } from './services/sub-category.service';
 import { AlertModule } from './alert/alert.module';
+import { TableListModule } from './table-list/table-list.module';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { AlertModule } from './alert/alert.module';
     UserDashboardModule,
     NgMaterialModule,
     AppRoutingModule,
-    AlertModule
+    AlertModule,
+    TableListModule
   ],
   providers: [
     ErrorService,
