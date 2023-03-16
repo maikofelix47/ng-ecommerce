@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { NgOptimizedImage } from '@angular/common'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -52,6 +53,7 @@ import { TableListModule } from './table-list/table-list.module';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    NgOptimizedImage,
     AdminModule,
     UserDashboardModule,
     NgMaterialModule,

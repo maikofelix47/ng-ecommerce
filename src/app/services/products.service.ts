@@ -25,20 +25,18 @@ export class ProductsService {
     );
   }
 
-  createProduct(product: Partial<Product>): Observable<Product> {
+  createProduct(product: any): Observable<Product> {
     const url = this.productUrl;
-    return this.http.post<Product>(url,product);
+    return this.http.post<Product>(url, product);
   }
 
-  getProducts(): Observable<Product[]>{
+  getProducts(): Observable<Product[]> {
     const url = this.productUrl;
-    return this.http.get<Product[]>(url).pipe(
-      shareReplay()
-    );
+    return this.http.get<Product[]>(url).pipe(shareReplay());
   }
 
-  getProductsBySubCategoryId(subCategoryId: number): Observable<Product[]>{
-     const url = this.productUrl + `/sub-category/${subCategoryId}`;
-     return this.http.get<Product[]>(url);
+  getProductsBySubCategoryId(subCategoryId: number): Observable<Product[]> {
+    const url = this.productUrl + `/sub-category/${subCategoryId}`;
+    return this.http.get<Product[]>(url);
   }
 }

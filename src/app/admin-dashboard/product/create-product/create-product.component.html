@@ -39,6 +39,12 @@
       <mat-label>In Stock : </mat-label>
       <input matInput formControlName="inStock" type="number" />
     </mat-form-field>
+    Feature Image :
+    <input
+      type="file"
+      formControlName="featureImg"
+      (change)="onFileChange($event)"
+    />
     <button mat-button mat-raised-button color="primary" (click)="submitData()">
       Create
     </button>

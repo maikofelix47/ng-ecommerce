@@ -1,3 +1,5 @@
+import { Media } from './media';
+
 export interface Product {
   name: string;
   id: number;
@@ -8,6 +10,7 @@ export interface Product {
   rating: number;
   subCategoryId: number;
   description: string;
+  media: Media[];
 }
 
 export interface CreateProductPayload {

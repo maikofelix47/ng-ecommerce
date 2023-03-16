@@ -6,7 +6,7 @@ import { SubCategory } from '../../../models/sub-category';
 import { CategoryService } from '../../../services/category.service';
 import { SubCategoryService } from '../../../services/sub-category.service';
 import { ProductsService } from 'src/app/services/products.service';
-import { Product } from '../../../models/product';
+import { Product, CreateProductPayload } from '../../../models/product';
 import { AlertService } from 'src/app/services/shared/alert.service';
 
 @Component({
@@ -25,6 +25,8 @@ export class CreateProductComponent implements OnInit {
     subCategoryId: new FormControl<number>(0, { nonNullable: true }),
     price: new FormControl<number>(0, { nonNullable: true }),
     inStock: new FormControl<number>(0, { nonNullable: true }),
+    featureImg: new FormControl<any | null>(''),
+    file: new FormControl<any | null>(''),
   });
 
   constructor(
@@ -50,19 +52,30 @@ export class CreateProductComponent implements OnInit {
         );
     }
   }
+  onFileChange($event: any) {
+    if ($event.target.files.length) {
+      const file = $event.target.files[0] || '';
+
+      this.createProductForm.patchValue({
+        file: file,
+      });
+    }
+  }
   submitData() {
-    const formData = this.createProductForm.value;
-    const payLoad: Partial<Product> = {
-      name: formData?.name || '',
-      description: formData.description || '',
-      subCategoryId: parseInt(formData.subCategoryId as unknown as string),
-      price: formData.price ? formData.price : 0,
-      inStock: formData.inStock ? formData.inStock : 0,
-    };
-    this.productsService.createProduct(payLoad).subscribe((result) => {
+    const formData = new FormData();
+    Object.keys(this.createProductForm.controls).forEach(
+      (formControlName: string) => {
+        formData.append(
+          formControlName,
+          this.createProductForm.get(formControlName)?.value
+        );
+      }
+    );
+
+    this.productsService.createProduct(formData).subscribe((result) => {
       const message = 'Product Succesfully Created';
       this.alertService.alert({
-        message
+        message,
       });
       this.createProductForm.reset();
     });
