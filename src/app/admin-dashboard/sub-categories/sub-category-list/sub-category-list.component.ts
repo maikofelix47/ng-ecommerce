@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 })
 export class SubCategoryListComponent implements OnInit {
   subCategoryList$!: Observable<SubCategory[]>;
-  public displayedColumns: string[] = ['id', 'name', 'description', 'action'];
+  public displayedColumns: string[] = ['id', 'name','category' ,'description', 'action'];
 
   constructor(private subCategoryService: SubCategoryService) {}
 

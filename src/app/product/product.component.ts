@@ -37,8 +37,8 @@ export class ProductComponent implements OnInit{
   public ngOnInit(): void {
      this.route.paramMap.subscribe((params: ParamMap)=> {
         if(params){
-            const categoryId = params.get('id');
-            this.getProductsByCategoryId(Number(categoryId));
+            const subCategoryId = params.get('subCategoryId');
+            this.getProductsBySubCategoryId(Number(subCategoryId));
         }
      });
 
@@ -50,9 +50,9 @@ export class ProductComponent implements OnInit{
      });
   }
 
-  getProductsByCategoryId(categoryId: number){
+  getProductsBySubCategoryId(categoryId: number){
      this.showLoader();
-     this.productService.getProductByCategoryId(categoryId)
+     this.productService.getProductsBySubCategoryId(categoryId)
      .subscribe((products: Product[])=> {
         this.products = products;
         this.filterProducts();

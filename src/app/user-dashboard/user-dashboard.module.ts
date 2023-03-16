@@ -19,6 +19,7 @@ import { MainBannerComponent } from '../main-banner/main-banner.component';
 import { CategoryComponent } from '../category/category.component';
 import { ProductFilterComponent } from '../product/product-filter/product-filter.component';
 import { NavbarModule } from '../navbar/navbar.module';
+import { ProductSubCategoryComponent } from '../product-sub-category/product-sub-category.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { NavbarModule } from '../navbar/navbar.module';
     RatingComponent,
     MainBannerComponent,
     CategoryComponent,
-    ProductFilterComponent
+    ProductFilterComponent,
+    ProductSubCategoryComponent
   ],
   imports: [
     CommonModule,

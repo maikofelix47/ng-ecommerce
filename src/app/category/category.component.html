@@ -5,10 +5,7 @@
         <mat-card
               class="category-card" 
               (click)="goToCategory(category.id)">
-            <mat-card-header>
-              <mat-card-title>{{category.name}}</mat-card-title>
-            </mat-card-header>
-            <img mat-card-image src="/assets/images/{{category.featureImg}}" alt={{category.name}} />
+              <h4>{{category.name}}</h4>
           </mat-card>
     </div>
      

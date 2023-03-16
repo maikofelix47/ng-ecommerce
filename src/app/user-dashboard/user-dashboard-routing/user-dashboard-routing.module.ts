@@ -10,6 +10,7 @@ import { ShoppingCartComponent } from '../..//shopping-cart/shopping-cart.compon
 import { AuthGuardService } from '../..//services/auth-guard.service';
 import { CheckoutComponent } from '../../checkout/checkout.component';
 import { AppreciationComponent } from '../../appreciation/appreciation.component';
+import { ProductSubCategoryComponent } from 'src/app/product-sub-category/product-sub-category.component';
 
 
 const routes: Routes = [
@@ -26,8 +27,12 @@ const routes: Routes = [
         component: ProductComponent,
       },
       {
-        path: 'category/:id',
+        path: 'products/subcategory/:subCategoryId',
         component: ProductComponent,
+      },
+      {
+        path: 'category/:id',
+        component: ProductSubCategoryComponent,
         title: 'Category'
       },
       {

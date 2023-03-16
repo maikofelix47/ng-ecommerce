@@ -28,7 +28,7 @@ import { TableListModule } from '../table-list/table-list.module';
     SubCategoriesComponent,
     SubCategoryListComponent,
     CreateSubCategoryComponent,
-    AdminProductListComponent,
+    AdminProductListComponent
   ],
   imports: [
     AdminRoutingModule,

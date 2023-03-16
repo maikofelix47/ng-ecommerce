@@ -36,4 +36,9 @@ export class ProductsService {
       shareReplay()
     );
   }
+
+  getProductsBySubCategoryId(subCategoryId: number): Observable<Product[]>{
+     const url = this.productUrl + `/sub-category/${subCategoryId}`;
+     return this.http.get<Product[]>(url);
+  }
 }

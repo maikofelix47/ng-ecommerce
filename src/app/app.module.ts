@@ -44,7 +44,7 @@ import { TableListModule } from './table-list/table-list.module';
     SignUpComponent,
     SearchComponent,
     ShoppingCartDialogComponent,
-    LoaderComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
