@@ -8,10 +8,4 @@ export interface Category {
 export interface CreateCategoryPayload {
   name: string;
   description: string;
-  file: {
-    name: string;
-    lastModilfied: number;
-    size: number;
-    type: string;
-  };
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Observable, tap } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Category } from '../../../models/category';
 import { CategoryService } from 'src/app/services/category.service';
 import { SubCategoryService } from 'src/app/services/sub-category.service';
@@ -30,8 +30,7 @@ export class CreateSubCategoryComponent implements OnInit {
   }
 
   getCategories() {
-    this.categories$ = this.categoryService
-      .getAll();
+    this.categories$ = this.categoryService.getAll();
   }
 
   public submitData() {
@@ -39,7 +38,7 @@ export class CreateSubCategoryComponent implements OnInit {
     const payLoad: SubCategory = {
       name: formData?.name || '',
       description: formData?.description || '',
-      categoryId: formData?.categoryId || 0,
+      categoryId: Number(formData?.categoryId) || 0,
     };
 
     this.subCategoryService

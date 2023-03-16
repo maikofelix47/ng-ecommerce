@@ -13,37 +13,17 @@ export class CreateCategoryComponent implements OnInit {
   createCategoryForm = new FormGroup({
     name: new FormControl<string>(''),
     description: new FormControl<string>(''),
-    featureImg: new FormControl<string>(''),
-    file: new FormControl<any | null>(''),
   });
 
   constructor(private categoryService: CategoryService) {}
 
   ngOnInit(): void {}
 
-  onFileChange($event: any) {
-    if ($event.target.files.length) {
-      const file = $event.target.files[0] || '';
-
-      this.createCategoryForm.patchValue({
-        file: file,
-      });
-    }
-  }
-
   submitCategoryData() {
-    const payload =
-      this.createCategoryForm.getRawValue() as unknown as CreateCategoryPayload;
+    const categoryPayload: CreateCategoryPayload = this.createCategoryForm
+      .value as unknown as CreateCategoryPayload;
 
-    const formData: any = new FormData();
-    formData.append('name', this.createCategoryForm.get('name')?.value);
-    formData.append(
-      'description',
-      this.createCategoryForm.get('description')?.value
-    );
-    formData.append('file', this.createCategoryForm.get('file')?.value);
-
-    this.categoryService.createCategory(formData).subscribe(
+    this.categoryService.createCategory(categoryPayload).subscribe(
       (result: any) => {
         console.log('result', result);
       },
