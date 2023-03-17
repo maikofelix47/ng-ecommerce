@@ -18,10 +18,10 @@
     <app-search></app-search>
   </span>
 -->
-    <button mat-button [matMenuTriggerFor]="menu" *ngIf="loggedInUser?.email">
-      {{ loggedInUser?.email }} <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="person"></mat-icon>
+    <button mat-button [matMenuTriggerFor]="menu" *ngIf="loggedInUser?.userName">
+      {{ loggedInUser?.userName }} <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="person"></mat-icon>
     </button>
-    <a [routerLink]="['/login']" class="router-link" *ngIf="!loggedInUser?.email">Login</a>
+    <a [routerLink]="['/login']" class="router-link" *ngIf="!loggedInUser?.userName">Login</a>
     <mat-menu #menu="matMenu">
     <button mat-menu-item>My Account</button>
     <button mat-menu-item>Orders</button>

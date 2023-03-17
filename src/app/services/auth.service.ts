@@ -61,9 +61,10 @@ export class AuthService {
     localStorage.removeItem('user');
   }
 
-  signUp(email: string, password: string) {
+  signUp(userName: string , email: string, password: string) {
     const url = this.backendBaseUrl + '/auth/sign-up';
     const payload = {
+      userName,
       email,
       password,
     };
@@ -77,10 +78,10 @@ export class AuthService {
     };
     return this.http.post(url, payload);
   }
-  setCurrentUser(email: string, tokenObj: LoginToken) {
+  setCurrentUser(loginResp: LoginToken) {
     const user: CurrentUser = {
-      email,
-      sessionToken: tokenObj,
+      userName: loginResp.userName,
+      sessionToken: loginResp,
     };
 
     localStorage.setItem('user', JSON.stringify(user));

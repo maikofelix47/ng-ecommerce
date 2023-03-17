@@ -1,6 +1,6 @@
 import { LoginToken } from "./login-token";
 
 export interface CurrentUser{
-    email: string;
+    userName: string;
     sessionToken: LoginToken
 }

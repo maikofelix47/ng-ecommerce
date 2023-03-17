@@ -14,6 +14,7 @@ import { ErrorService } from '../services/shared/error.service';
 export class SignUpComponent {
   public email = '';
   public password = '';
+  public userName = '';
 
   constructor(
     private authService: AuthService,
@@ -22,7 +23,7 @@ export class SignUpComponent {
   ) {}
 
   public signUp() {
-    this.authService.signUp(this.email, this.password).subscribe(
+    this.authService.signUp(this.userName,this.email, this.password).subscribe(
       (result: any) => {
         this.router.navigate(['/login']);
       },

@@ -3,6 +3,10 @@
     
     <form class="signup-form">
       <mat-form-field class="signup-form-field">
+        <mat-label>Username</mat-label>
+        <input matInput type="text" [(ngModel)]="userName" name="userName" />
+      </mat-form-field>
+      <mat-form-field class="signup-form-field">
         <mat-label>Email</mat-label>
         <input matInput type="email" [(ngModel)]="email" name="email" />
       </mat-form-field>
