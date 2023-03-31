@@ -8,7 +8,7 @@
     <span class="example-spacer"></span>
     <span>
       <a [routerLink]="['/shopping-cart']" class="router-link">
-      <mat-icon aria-hidden="false" matBadge="{{itemsInCart$ | async}}" matBadgeColor="warn" aria-label="Shopping cart icon" fontIcon="shopping_cart" *ngIf="loggedInUser?.email"></mat-icon> 
+      <mat-icon aria-hidden="false" matBadge="{{itemsInCart$ | async}}" matBadgeColor="warn" aria-label="Shopping cart icon" fontIcon="shopping_cart" *ngIf="loggedInUser?.userName"></mat-icon> 
       
      </a>
    </span>
