@@ -61,10 +61,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "ng-ecommerce:build:production"
+              "buildTarget": "ng-ecommerce:build:production"
             },
             "development": {
-              "browserTarget": "ng-ecommerce:build:development"
+              "buildTarget": "ng-ecommerce:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -72,7 +72,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ng-ecommerce:build"
+            "buildTarget": "ng-ecommerce:build"
           }
         },
         "test": {
