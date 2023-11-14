@@ -2,20 +2,20 @@
 
 This an Angular Project for an E-Commerce Store front.
 
-
 ## Requirements
 
 1. Node v12+
-2. Angular v15+
+2. Angular v20+
 3. Angular Material
 4. NestJS Backend `https://github.com/maikofelix47/nest-ec-backend`
 
 ## Authentication
+
 The project uses a NestJS backend. On successfull A user token is sent back as part of the response and the system uses it for authetication. The token is sent as an auth payload for each request to the backend.
 
 `
 headers': {
-    'Authorization': 'Bearer accessToken'
+'Authorization': 'Bearer accessToken'
 }
 
 `
